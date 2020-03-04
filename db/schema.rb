@@ -15,6 +15,76 @@ ActiveRecord::Schema.define(version: 2020_03_04_164237) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "groups", force: :cascade do |t|
+    t.string "status"
+    t.string "region"
+    t.string "designation"
+    t.bigint "offered_service_id", null: false
+    t.string "winemaker_profil"
+    t.string "deferred_remunation"
+    t.string "services", array: true
+    t.integer "votes"
+    t.integer "profitability"
+    t.integer "share_available"
+    t.integer "investment_total"
+    t.integer "ticket_amount"
+    t.bigint "investment_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["investment_id"], name: "index_groups_on_investment_id"
+    t.index ["offered_service_id"], name: "index_groups_on_offered_service_id"
+    t.index ["user_id"], name: "index_groups_on_user_id"
+  end
+
+  create_table "investments", force: :cascade do |t|
+    t.string "investment_name"
+    t.text "punchline"
+    t.string "winemaker_name"
+    t.string "domaine_name"
+    t.text "description"
+    t.boolean "bio"
+    t.string "region"
+    t.string "designation"
+    t.integer "ticket_amount"
+    t.integer "investment_total"
+    t.integer "share_available"
+    t.integer "total_share"
+    t.integer "profitability"
+    t.string "remuneration"
+    t.string "winemaker_profile"
+    t.boolean "deferred_remuneration"
+    t.date "date_of_end"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "offered_service_id", null: false
+    t.bigint "investments_group_id", null: false
+    t.bigint "group_id", null: false
+    t.index ["group_id"], name: "index_investments_on_group_id"
+    t.index ["investments_group_id"], name: "index_investments_on_investments_group_id"
+    t.index ["offered_service_id"], name: "index_investments_on_offered_service_id"
+    t.index ["user_id"], name: "index_investments_on_user_id"
+  end
+
+  create_table "investments_groups", force: :cascade do |t|
+    t.bigint "investment_id", null: false
+    t.bigint "group_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_investments_groups_on_group_id"
+    t.index ["investment_id"], name: "index_investments_groups_on_investment_id"
+  end
+
+  create_table "offered_services", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.bigint "investment_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["investment_id"], name: "index_offered_services_on_investment_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -32,4 +102,26 @@ ActiveRecord::Schema.define(version: 2020_03_04_164237) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "users_groups", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
+    t.integer "share_amount"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_users_groups_on_group_id"
+    t.index ["user_id"], name: "index_users_groups_on_user_id"
+  end
+
+  add_foreign_key "groups", "investments"
+  add_foreign_key "groups", "offered_services"
+  add_foreign_key "groups", "users"
+  add_foreign_key "investments", "groups"
+  add_foreign_key "investments", "investments_groups"
+  add_foreign_key "investments", "offered_services"
+  add_foreign_key "investments", "users"
+  add_foreign_key "investments_groups", "groups"
+  add_foreign_key "investments_groups", "investments"
+  add_foreign_key "offered_services", "investments"
+  add_foreign_key "users_groups", "groups"
+  add_foreign_key "users_groups", "users"
 end
