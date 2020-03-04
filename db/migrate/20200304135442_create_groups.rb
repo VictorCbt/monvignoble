@@ -4,7 +4,7 @@ class CreateGroups < ActiveRecord::Migration[6.0]
       t.string :status
       t.string :region
       t.string :designation
-      t.references :service_offered, null: false, foreign_key: true
+      t.references :offered_service, null: false, foreign_key: true
       t.string :winemaker_profil
       t.string :deferred_remunation
       t.string :services, array: true
