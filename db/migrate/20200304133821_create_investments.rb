@@ -15,9 +15,6 @@ class CreateInvestments < ActiveRecord::Migration[6.0]
       t.integer :total_share
       t.integer :profitability
       t.string :remuneration
-      t.references :service_offered, null: false, foreign_key: true
-      t.references :investment_group, null: false, foreign_key: true
-      t.references :group, null: false, foreign_key: true
       t.string :winemaker_profile
       t.boolean :deferred_remuneration
       t.date :date_of_end

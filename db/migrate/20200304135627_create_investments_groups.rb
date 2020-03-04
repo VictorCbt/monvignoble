@@ -1,6 +1,6 @@
-class CreateInvestmentGroups < ActiveRecord::Migration[6.0]
+class CreateInvestmentsGroups < ActiveRecord::Migration[6.0]
   def change
-    create_table :investment_groups do |t|
+    create_table :investments_groups do |t|
       t.references :investment, null: false, foreign_key: true
       t.references :group, null: false, foreign_key: true
 
