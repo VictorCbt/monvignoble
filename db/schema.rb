@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 2020_03_04_164237) do
     t.string "status"
     t.string "region"
     t.string "designation"
-    t.bigint "offered_service_id", null: false
     t.string "winemaker_profil"
     t.string "deferred_remunation"
     t.string "services", array: true
@@ -33,7 +32,6 @@ ActiveRecord::Schema.define(version: 2020_03_04_164237) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["investment_id"], name: "index_groups_on_investment_id"
-    t.index ["offered_service_id"], name: "index_groups_on_offered_service_id"
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
@@ -58,12 +56,8 @@ ActiveRecord::Schema.define(version: 2020_03_04_164237) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "offered_service_id", null: false
-    t.bigint "investments_group_id", null: false
-    t.bigint "group_id", null: false
+    t.bigint "group_id"
     t.index ["group_id"], name: "index_investments_on_group_id"
-    t.index ["investments_group_id"], name: "index_investments_on_investments_group_id"
-    t.index ["offered_service_id"], name: "index_investments_on_offered_service_id"
     t.index ["user_id"], name: "index_investments_on_user_id"
   end
 
@@ -113,11 +107,8 @@ ActiveRecord::Schema.define(version: 2020_03_04_164237) do
   end
 
   add_foreign_key "groups", "investments"
-  add_foreign_key "groups", "offered_services"
   add_foreign_key "groups", "users"
   add_foreign_key "investments", "groups"
-  add_foreign_key "investments", "investments_groups"
-  add_foreign_key "investments", "offered_services"
   add_foreign_key "investments", "users"
   add_foreign_key "investments_groups", "groups"
   add_foreign_key "investments_groups", "investments"
