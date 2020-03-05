@@ -11,11 +11,20 @@ class InvestmentsController < ApplicationController
 
   def create
     @investment = Investment.new(investments_strong_params)
-    @investment.save
+    @investment.user = current_user
+    # group_id
+    # investments_group_id
+    # offered_services_id
+    # user_id
+    if @investment.save
+      puts "bonjuor"
+    else
+      render 'new'
+    end
+
   end
 
   def show
-
   end
 
   def destroy
@@ -29,15 +38,14 @@ class InvestmentsController < ApplicationController
   def update
   end
 
-
-
-
 private
 
   def investments_strong_params
-    params.require(:investment).permit(:investment_name, :punchline, :winemaker_name, :domaine_name, :description, :bio, :region, :designation, :ticket_amount, :investment_total, :share_available, :total_share, :profitability, :remuneration, :winemaker_profile, :deferred_remuneration, :date_of_end)
+    params.require(:investment).permit(
+      :investment_name, :punchline, :winemaker_name, :domaine_name, :description,
+      :bio, :region, :designation, :ticket_amount, :investment_total, :share_available,
+      :total_share, :profitability, :remuneration, :winemaker_profile,
+      :deferred_remuneration, :date_of_end
+    )
   end
-
-
-
 end
