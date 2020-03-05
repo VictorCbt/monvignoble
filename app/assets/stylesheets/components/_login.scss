@@ -1,13 +1,11 @@
   /* Coded with love by Mutiullah Samim */
 
 
-
     .user_card {
-
       width: 350px;
       margin-top: auto;
       margin-bottom: auto;
-      background: #f39c12;
+      background: #e9d2d5;
       position: relative;
       display: flex;
       justify-content: center;
@@ -17,6 +15,7 @@
       -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       border-radius: 5px;
+      border: solid #a23e48;
 
     }
     .brand_logo_container {
@@ -29,6 +28,19 @@
       padding: 10px;
       text-align: center;
     }
+
+    .btn_btn_login {
+        color: white !important;
+    }
+
+    .login_container button {
+      color: white !important;
+    }
+
+    .liens-signup, a {
+        color: #4b4b4b !important;
+    }
+
     .brand_logo {
       height: 150px;
       width: 150px;
@@ -41,7 +53,6 @@
     .login_btn {
       width: 100%;
       background: #a23e48 !important;
-      color: white !important;
     }
     .login_btn:focus {
       box-shadow: none !important;
@@ -50,6 +61,12 @@
     .login_container {
       padding: 0 2rem;
     }
+
+    input[type="submit"] {
+     color: white;
+     hover: grey;
+    }
+
     .input-group-text {
       background: #a23e48 !important;
       color: white !important;
