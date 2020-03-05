@@ -12,12 +12,7 @@ class InvestmentsController < ApplicationController
   def create
     @investment = Investment.new(investments_strong_params)
     @investment.user = current_user
-    # group_id
-    # investments_group_id
-    # offered_services_id
-    # user_id
     if @investment.save
-      puts "bonjuor"
     else
       render 'new'
     end
@@ -25,6 +20,7 @@ class InvestmentsController < ApplicationController
   end
 
   def show
+     @investment = Investment.find(params[:id])
   end
 
   def destroy
