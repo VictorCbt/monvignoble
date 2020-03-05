@@ -12,7 +12,6 @@ class CreateGroups < ActiveRecord::Migration[6.0]
       t.integer :share_available
       t.integer :investment_total
       t.integer :ticket_amount
-      t.references :investment, null: false, foreign_key: true
       t.references :user, null: false, foreign_key: true
 
       t.timestamps

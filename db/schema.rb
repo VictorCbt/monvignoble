@@ -27,11 +27,9 @@ ActiveRecord::Schema.define(version: 2020_03_04_164237) do
     t.integer "share_available"
     t.integer "investment_total"
     t.integer "ticket_amount"
-    t.bigint "investment_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["investment_id"], name: "index_groups_on_investment_id"
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
@@ -106,7 +104,6 @@ ActiveRecord::Schema.define(version: 2020_03_04_164237) do
     t.index ["user_id"], name: "index_users_groups_on_user_id"
   end
 
-  add_foreign_key "groups", "investments"
   add_foreign_key "groups", "users"
   add_foreign_key "investments", "groups"
   add_foreign_key "investments", "users"
