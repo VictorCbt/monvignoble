@@ -1,4 +1,6 @@
 class OfferedService < ApplicationRecord
   belongs_to :investment
-end
 
+  validates :title, presence: true
+  validates :description, presence: true
+end
