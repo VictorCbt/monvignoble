@@ -1,0 +1,23 @@
+<h1>hello show</h1>
+
+<h1 class='title-page'>Créer votre groupe d'investisseurs</h1>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <%= simple_form_for @group do |f| %>
+        <%= f.input :status, label: 'Statut du groupe', collection: ["Privé", "Public"] %>
+        <%= f.input :region, label: 'Région(s) viticole(s) souhaitée(s)' %>
+        <%= f.input :designation, label: 'Appellation(s) souhaitée(s)' %>
+        <%= f.input :ticket_amount, label: "Ticket d'entrée" %>
+        <%= f.input :share_available, label: 'Parts disponibles' %>
+        <%= f.input :investment_total, label: "Montant de l'investissement total" %>
+        <%= f.input :profitability, label: 'Rentabilité espérée' %>
+        <%= f.input :services, label: 'Services proposés par le vigneron' %>
+        <%= f.input :winemaker_profil, label: 'Profil du vigneron' %>
+        <%= f.input :deferred_remunation, label: 'Accepte les rémunérations différées' %>
+        <%= f.input :photo, as: :file %>
+        <%= f.button :submit, "Valider", class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>
