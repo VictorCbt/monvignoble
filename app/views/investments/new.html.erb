@@ -1,0 +1,37 @@
+
+
+<h1 class='title-page text-center' >Publier un nouvel investissement</h1>
+<br>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <%= simple_form_for @investment do |f| %>
+        <%= f.input :investment_name, label: 'Nom investissemernt' %>
+        <%= f.input :punchline, label: 'puncline de l\'invest' %>
+
+        <p>Exploitation</p>
+        <hr>
+        <%= f.input :winemaker_name, label: 'your name' %>
+        <%= f.input :domaine_name, label: 'nom de votre deomaine' %>
+        <%= f.input :designation, label: 'Appelation' %>
+        <%= f.input :region, label: 'region' %>
+        <%= f.input :description, label: 'votre description'%>
+        <%= f.input :bio, label: 'oui / non'%>
+        <p>Vigneron</p>
+        <hr>
+        <%= f.input :winemaker_profile, label: 'jeune vigneron ou installé'%>
+        <p>Financier</p>
+        <hr>
+        <%= f.input :ticket_amount, label: 'Montant du ticket' %>
+        <%= f.input :investment_total,label: 'Montant du ticket' %>
+        <%= f.input :share_available, label: 'Tarif à la journée'%>
+        <%= f.input :total_share, label: 'parts totales'  %>
+        <%= f.input :profitability, label: '% rendement' %>
+        <%= f.input :remuneration, label: 'nbr de bouteilles' %>
+        <%= f.input :deferred_remuneration, label: 'différe de rendement ?' %>
+        <%= f.input :date_of_end, label: 'date de fin d\'investissement', as: :date %>
+        <%= f.button :submit, "Valider", class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>
