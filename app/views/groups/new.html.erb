@@ -1,0 +1,13 @@
+<h1 class='title-page'>Créer votre groupe d'investisseurs</h1>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <%= simple_form_for @group do |f| %>
+        <%= f.input :name, label: 'Nom du groupe' %>
+        <%= f.input :status, label: 'Statut du groupe', collection: ["Privé", "Public"] %>
+        <%#= f.input :photo, as: :file %>
+        <%= f.button :submit, "Valider", class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>
