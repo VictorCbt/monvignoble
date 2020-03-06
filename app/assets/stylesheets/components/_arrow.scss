@@ -1,8 +1,8 @@
 body{
   margin: 0;
   padding: 0;
-  background-color: #000;
 }
+
 .arrow{
     position: absolute;
     top: 88%;
@@ -25,6 +25,7 @@ body{
 .arrow span:nth-child(3){
     animation-delay: -0.4s;
 }
+
 @keyframes animate {
     0%{
         opacity: 0;
