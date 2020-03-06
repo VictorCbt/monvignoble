@@ -1,20 +1,48 @@
-<h1 class='title-page'> <%= @group.name %> </h1>
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/442116/pexels-photo-442116.jpeg?cs=srgb&dl=clouds-countryside-cropland-crops-442116.jpg&fm=jpg)">
+  <%= @group.name %>
+</div>
+
 <div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <%= simple_form_for @group do |f| %>
-        <%= f.input :status, label: 'Statut du groupe', collection: ["Privé", "Public"] %>
-        <%= f.input :region, label: 'Région(s) viticole(s) souhaitée(s)' %>
-        <%= f.input :designation, label: 'Appellation(s) souhaitée(s)' %>
-        <%= f.input :ticket_amount, label: "Ticket d'entrée" %>
-        <%= f.input :share_available, label: 'Parts disponibles' %>
-        <%= f.input :investment_total, label: "Montant de l'investissement total" %>
-        <%= f.input :profitability, label: 'Rentabilité espérée' %>
-        <%= f.input :services, label: 'Services proposés par le vigneron' %>
-        <%= f.input :winemaker_profile, label: 'Profil du vigneron' %>
-        <%= f.input :deferred_remuneration, label: 'Accepte les rémunérations différées' %>
-        <%= f.button :submit, "Valider", class: 'btn btn-primary' %>
-      <% end %>
+  <h1 class='title'>Votre projet d'investissement</h1>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <%= simple_form_for @group do |f| %>
+          <%= f.input :status, label: 'Statut du groupe', collection: ["Privé", "Public"] %>
+          <%= f.input :region, label: 'Région(s) viticole(s) souhaitée(s)', collection: ["Alsace", "Beaujolais", "Bordeaux", "Bourgogne", "Champagne", "Corse", "Jura", "Languedoc-Roussillon", "Provence", "Savoie", "Sud-Ouest", "Vallée de la Loire", "Vallée du Rhône"] %>
+          <%= f.input :designation, label: 'Appellation(s) souhaitée(s)' %>
+          <%= f.input :ticket_amount, label: "Ticket d'entrée" %>
+          <%= f.input :share_available, label: 'Parts disponibles' %>
+          <%= f.input :investment_total, label: "Montant de l'investissement total" %>
+          <%= f.input :profitability, label: 'Rentabilité espérée' %>
+          <%= f.input :services, label: 'Services proposés par le vigneron' %>
+          <%= f.input :winemaker_profile, label: 'Profil du vigneron', collection: ["Jeune vigneron", "Vigneron installé"] %>
+          <%= f.input :deferred_remuneration, label: 'Accepte les rémunérations différées', as: :boolean %>
+          <%= f.button :submit, "Valider", class: 'btn btn-primary' %>
+        <% end %>
+      </div>
     </div>
+  <h1 class='title'>Votre liste de souhaits</h1>
+  <div class="btn btn-info">
+    <%= link_to "Lancer la recherche", root_path %>
   </div>
+  <br>
+  <br>
+  <div class="btn btn-info">
+    <%= link_to "Paramétrer le groupe", root_path %>
+  </div>
+
+  <div class="btn btn-info">
+    <%= link_to "Partager le lien du groupe", root_path %>
+  </div>
+
+  <div class="btn btn-info">
+    <%= link_to "Valider une demande d'intérêt", root_path %>
+  </div>
+
+  <div class="btn btn-info">
+    <%= link_to "Demander l'avis à l'un de nos experts", root_path %>
+  </div>
+
+  <h1 class='title'>Investisseurs</h1>
+
 </div>

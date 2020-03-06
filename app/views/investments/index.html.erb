@@ -1,2 +1,32 @@
-<h1>Investments#index</h1>
-<p>Find me in app/views/investments/index.html.erb</p>
+<h1 class='title-page'>Résultat de la recherche</h1>
+<div class="results-container">
+   <div id=filter>
+     Rajouter les filtres
+   </div>
+  <div class="cards-result">
+    <div style="list-style-type: none">
+      <% @investments.each do |investment| %>
+        <div class="card-result">
+          <div>
+          <%#= cl_image_tag investment.photo.key, height: 200, width: 300, crop: :fill if investment.photo.attached? %>
+          </div>
+          <div class="card-result-text">
+            <div class="card-result-infos">
+              <h2><%= investment.domaine_name %></h2>
+              <p><%= investment.region %> - <%= investment.designation %></p>
+              <hr>
+              <h2>Chez <%= investment.user.first_name %> <%= investment.user.last_name %> !</h2>
+            </div>
+            <div class="card-result-pricing">
+              <h2><%= investment.ticket_amount %> €</h2>
+              <h2><%= investment.share_available %> parts disponibles</h2>
+              <div class="btn btn-info">
+                <%= link_to "Plus d'info", investment_path(investment) %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

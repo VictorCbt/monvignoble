@@ -8,6 +8,6 @@ class Group < ApplicationRecord
 
   validates :name, presence: true , uniqueness: true
   validates :status, presence: true
-  validates :region, inclusion: { in: ["Alsace", "Beaujolais", "Bordeaux", "Bourgogne", "Champagne", "Corse", "Jura", "Languedoc-Roussillon", "Vallée de la Loire", "Provence", "Savoie", "Vallée du Rhône", "Sud-Ouest"] }, allow_nil: true
+  validates :region, inclusion: { in: ["Alsace", "Beaujolais", "Bordeaux", "Bourgogne", "Champagne", "Corse", "Jura", "Languedoc-Roussillon", "Provence", "Savoie", "Sud-Ouest", "Vallée de la Loire", "Vallée du Rhône"] }, allow_nil: true
   validates :winemaker_profile, inclusion: { in: ["Jeune vigneron", "Vigneron installé"] }, allow_nil: true
 end
