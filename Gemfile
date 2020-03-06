@@ -10,6 +10,7 @@ gem 'rails', '6.0.2.1'
 gem 'redis'
 
 gem 'omniauth-google-oauth2', '~> 0.8.0'
+gem 'cloudinary', '~> 1.12.0'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.12.0'

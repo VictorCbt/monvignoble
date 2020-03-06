@@ -48,7 +48,7 @@ private
       :investment_name, :punchline, :winemaker_name, :domaine_name, :description,
       :bio, :region, :designation, :ticket_amount, :investment_total, :share_available,
       :total_share, :profitability, :remuneration, :winemaker_profile,
-      :deferred_remuneration, :date_of_end
+      :deferred_remuneration, :date_of_end, :photo
     )
   end
 end

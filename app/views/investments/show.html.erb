@@ -14,7 +14,7 @@
     <div class="row investment-title">
 
       <div class="col-8">
-        <%= image_tag("Image_test.jpg", class: "image-invests") %>
+        <%= cl_image_tag @investment.photo.key, crop: :fill, class: "image-invests" if @investment.photo.attached? %>
       </div>
 
       <div class="col-4">
