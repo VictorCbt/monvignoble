@@ -13,6 +13,7 @@ class InvestmentsController < ApplicationController
     @investment = Investment.new(investments_strong_params)
     @investment.user = current_user
     if @investment.save
+      redirect_to investment_path(@investment)
     else
       render 'new'
     end
@@ -30,11 +31,14 @@ class InvestmentsController < ApplicationController
   end
 
   def edit
-
+    @investment = Investment.find(params[:id])
   end
 
   def update
+    @investment = Investment.find(params[:id])
+    @investment.update!(investment_params)
 
+    redirect_to investmenet_path(@investment)
   end
 
 private
