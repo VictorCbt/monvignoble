@@ -26,12 +26,15 @@ class InvestmentsController < ApplicationController
   def destroy
     @investment = Investment.find(params[:id])
     @investment.destroy!
+
   end
 
   def edit
+
   end
 
   def update
+
   end
 
 private
