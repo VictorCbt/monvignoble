@@ -20,4 +20,11 @@ class Investment < ApplicationRecord
   validates :total_share, presence: true
   validates :remuneration, presence: true
   validates :winemaker_profile, presence: true, inclusion: { in: ["Jeune vigneron", "Vigneron installé"] }, allow_nil: true
+
+  attr_accessor :match
 end
+
+
+
+
+
