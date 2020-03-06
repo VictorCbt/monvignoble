@@ -45,7 +45,3 @@ group2.save
 # investments_group1 = InvestmentGroup.create!(investment_id: ivestment1)
 # investments_group2 = InvestmentGroup.create!()
 # investments_group3 = InvestmentGroup.create!()
-
-
-
-
