@@ -2,7 +2,8 @@ class InvestmentsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :show]
 
   def index
-    @investments = Investment.all
+    @investments = InvestmentSearch.new(params).apply_search
+    # @investments = Investment.all
   end
 
   def new
