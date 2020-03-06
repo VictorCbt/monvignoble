@@ -5,6 +5,8 @@ class Investment < ApplicationRecord
   belongs_to :user
   has_many :offered_services, dependent: :destroy
 
+  has_one_attached :photo
+
   validates :investment_name, presence: true, uniqueness: true
   validates :punchline, presence: true, uniqueness: true
   validates :winemaker_name, presence: true
@@ -18,4 +20,11 @@ class Investment < ApplicationRecord
   validates :total_share, presence: true
   validates :remuneration, presence: true
   validates :winemaker_profile, presence: true, inclusion: { in: ["Jeune vigneron", "Vigneron installé"] }, allow_nil: true
+
+  attr_accessor :match
 end
+
+
+
+
+
