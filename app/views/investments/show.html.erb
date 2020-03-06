@@ -4,8 +4,8 @@
   <br>
 
       <div class="col-md-12 text-center">
-        <h1>Titre de l'investissement</h1>
-        <p>Pour découvrir les océans autrement et flotter sans aller dans l’espace, tout ça en restant sur notre planète !</p>
+        <h1><%= @investment.investment_name %></h1>
+        <p><%= @investment.punchline %></p>
         <span class="BPDUh"></span>
         <br>
       </div>
@@ -20,12 +20,22 @@
       <div class="col-4">
         <div class="d-flex">
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
-          <div class="align-self-center ml-3"><h4><strong>Name</strong></h4></div>
+          <div class="align-self-center ml-3"><h4><strong><%= @investment.user.first_name %> <%= @investment.user.last_name %></strong></h4></div>
         </div>
-        <h4 class="mt-5">Titre de l'investissement</h4>
-        <p>Puncline</p>
+
+        <div class="d-flex" >
+          <div class="align-self-center ml-3">
+            <%= image_tag("wine.png", class: "image-wine") %>
+          </div>
+          <div class="align-self-center ml-4">
+            <h4 class="pt-3">Appelation</h4>
+            <p> xxx </p>
+          </div>
+        </div>
+
+
         <hr>
-        <p>Personnes déja interessées</p>
+        <p>Groupes intérressés</p>
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/sarahlafer", class: "avatar-bordered", alt: "avatar-bordered" %>
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/sarahlafer", class: "avatar-bordered", alt: "avatar-bordered" %>
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/sarahlafer", class: "avatar-bordered", alt: "avatar-bordered" %>
@@ -45,7 +55,7 @@
         <div class="left-element">
 
           <div class="exp-desc">
-            <h2>nom du domaine</h2>
+            <h2><%= @investment.domaine_name %></h2>
             <div id="prod"class="key">
               <ul>
                 <p> du text de description</p>
@@ -75,19 +85,22 @@
           <div class="day-left">
 
           </div>
-          <h4>Mes évenements proposés</h4>
+          <h4>Evenements proposés</h4>
         </div>
+
+        <% @investment.offered_services.each do |offer| %>
           <div class="card card-product">
             <div class="card-description product">
               <div class="icon">
               </div>
-              <span>Etiquette<br>à votre nom</span>
+              <span><strong> <%= offer.title %></strong> </span>
               <hr class="product">
-              <p class="ticket-number">dedzd</p>
+              <p class="ticket-number"><%= offer.description %></p>
                 <br><br>
-
             </div>
           </div>
+          <br>
+        <% end %>
 
       </div>
     </div>

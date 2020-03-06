@@ -1,0 +1,11 @@
+<h1>Ajouter un service</h1>
+
+<%= simple_form_for [@investment, @offered_service] do |f| %>
+  <%= f.input :title, collection:  @offered_service.class::CATEGORIES %>
+  <%= f.input :description %>
+
+  <hr>
+  <%= f.button :submit, class: "btn btn-outline-danger w-100", value: "Creer un service" %>
+<% end %>
+
+

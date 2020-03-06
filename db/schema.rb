@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_05_132604) do
+ActiveRecord::Schema.define(version: 2020_03_06_141415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,9 +98,9 @@ ActiveRecord::Schema.define(version: 2020_03_05_132604) do
   create_table "users_groups", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "group_id", null: false
-    t.integer "share_amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
     t.index ["group_id"], name: "index_users_groups_on_group_id"
     t.index ["user_id"], name: "index_users_groups_on_user_id"
   end
