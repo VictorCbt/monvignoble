@@ -28,14 +28,22 @@
             <%= image_tag("wine.png", class: "image-wine") %>
           </div>
           <div class="align-self-center ml-4">
-            <h4 class="pt-3">Appelation</h4>
-            <p> xxx </p>
+            <h4 class="pt-3"><%= @investment.designation %></h4>
+            <p class=""> <%= @investment.region  %> </p>
           </div>
+        </div>
+
+        <div class="progression">
+          <%= @investment.investment_total %>
+          <% @investment.groups.each do |group|  %>
+          <%= group.name  %>
+          <% end  %>
         </div>
 
 
         <hr>
-        <p>Groupes intérressés</p>
+        <p>Membres du groupe intérressés</p>
+
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/sarahlafer", class: "avatar-bordered", alt: "avatar-bordered" %>
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/sarahlafer", class: "avatar-bordered", alt: "avatar-bordered" %>
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/sarahlafer", class: "avatar-bordered", alt: "avatar-bordered" %>
@@ -58,22 +66,28 @@
             <h2><%= @investment.domaine_name %></h2>
             <div id="prod"class="key">
               <ul>
-                <p> du text de description</p>
+                <p><%= @investment.description  %> </p>
               </ul>
             </div>
           </div>
+           <div class="exp-desc">
 
-          <div class="exp-desc">
-            <h2>Mon projet</h2>
             <div id="prod"class="key">
               <ul>
-                <li>icone 1</li>
-                <li>Lancement</li>
-                <li>icone 2</li>
-                <li>2% de rentabilité</li>
-                <li>icone 2</li>
-                <li>2% de rentabilité</li>
-              </ul>
+                <li><%= image_tag("wine.png", class: "image-wine") %><%= image_tag("wine.png", class: "image-wine") %><%= image_tag("wine.png", class: "image-wine") %></li>
+                <%= @investment.remuneration %>
+
+                <li></li>
+                <li><%= image_tag("plant.png", class: "image-money") %></li>
+                <%= @investment.profitability  %> %
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li><%= image_tag("money2.png", class: "image-money") %></li>
+                <%= @investment.winemaker_profile %>
+               </ul>
             </div>
           </div>
 
@@ -89,9 +103,10 @@
         </div>
 
         <% @investment.offered_services.each do |offer| %>
-          <div class="card card-product">
+          <div class="card card-product text-center">
             <div class="card-description product">
-              <div class="icon">
+              <div class="icon text-center">
+                <%= image_tag("Tickets.png", class: "image-ticket") %>
               </div>
               <span><strong> <%= offer.title %></strong> </span>
               <hr class="product">
