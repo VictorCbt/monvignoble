@@ -15,11 +15,27 @@
   width: 60px;
 }
 
+.image-domaine {
+  width: 50px;
+}
+
 .image-money2 {
-  width: 60px;
+  width: 50px;
 }
 .image-ticket {
   width: 80px;
+}
+
+.image-project {
+  width: 40px;
+}
+
+.avatar-large-invest {
+    width: 50px;
+    border-radius: 100%;
+}
+.title-invstment {
+  color: #a23e48;
 }
 
 .BPDUh {
@@ -44,7 +60,7 @@
   background-color: #a23e48;
   border: 0;
   padding: 10px 30px;
-  margin: 20px 0;
+  margin: 20px 0 10px 0;
   &:hover {
     background-color: darken(#a23e48, 4%);
     &:before {
@@ -66,16 +82,19 @@
 }
 
 .key {
-  margin: 32px 0 40px 0;
+  background-color: white;
+  margin: 20px 0 0px 0;
   ul {
     display: flex;
     align-items: center;
     list-style: none;
     padding: 0;
     border: 1px solid #dedede;
-    padding: 5px;
-    border-radius: 8px;
+    padding: 12px;
+    border-radius: 0px;
+
     li {
+      padding: 10px;
       font-weight: bold;
       padding: 0 5px;
       font-size: 14px;

@@ -19,27 +19,19 @@
 
       <div class="col-4">
         <div class="d-flex">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
+          <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large-invest", alt: "avatar-large" %>
           <div class="align-self-center ml-3"><h4><strong><%= @investment.user.first_name %> <%= @investment.user.last_name %></strong></h4></div>
         </div>
 
         <div class="d-flex" >
-          <div class="align-self-center ml-3">
-            <%= image_tag("wine.png", class: "image-wine") %>
+          <div class="align-self-center">
+            <%= image_tag("wine1.png", class: "image-domaine") %>
           </div>
-          <div class="align-self-center ml-4">
+          <div class="align-self-center ml-3">
             <h4 class="pt-3"><%= @investment.designation %></h4>
             <p class=""> <%= @investment.region  %> </p>
           </div>
         </div>
-
-        <div class="progression">
-          <%= @investment.investment_total %>
-          <% @investment.groups.each do |group|  %>
-          <%= group.name  %>
-          <% end  %>
-        </div>
-
 
         <hr>
         <p>Membres du groupe intérressés</p>
@@ -48,9 +40,27 @@
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/sarahlafer", class: "avatar-bordered", alt: "avatar-bordered" %>
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/sarahlafer", class: "avatar-bordered", alt: "avatar-bordered" %>
         <hr>
-        <button type="button" class="btn-investment w-100">Participer à ce groupement</button>
+
+        <div class="progression d-flex ">
+
+          <div class="align-self-center">
+            <%= image_tag("project.png", class: "image-project") %>
+          </div>
+          <div class="align-self-center ml-3">
+             <h3 class="title-invstment"><strong><%= number_to_currency(@investment.investment_total, precision: 0, :unit => " €  ") %></strong></h2>
+          </div>
+
+          <% @investment.groups.each do |group|  %>
+          <%= group.name  %>
+          <% end  %>
+        </div>
 
 
+
+        <button type="button" id="sweet-alert-demo" class="btn-investment w-100">Participer à ce groupement</button>
+        <p class="title-invstment text-center"> <small>A partir de : </small><strong>€ <%= @investment.ticket_amount %></strong> le ticket</p>
+<!--         <p class="title-invstment text-center"> <small>Fin du projet le : </small><strong>€ <%= @investment.date_of_end %></strong> le ticket</p>
+ -->
       </div>
     </div>
 
