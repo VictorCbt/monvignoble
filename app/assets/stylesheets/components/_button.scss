@@ -39,3 +39,10 @@
   background: linear-gradient(#147EFF, #0F67DA);
   color: white;
 }
+
+.btn-info > a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+}
