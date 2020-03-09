@@ -31,7 +31,6 @@ class UsersGroupsController < ApplicationController
     @users_group.user = current_user
     @users_group.status = "pending"
     @users_group.save!
-    redirect_to group_path(@group)
   end
 
   def confirm
