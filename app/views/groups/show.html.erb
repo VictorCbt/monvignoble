@@ -4,14 +4,18 @@
 
 <div class="container">
   <h1 class='title'>Votre projet d'investissement</h1>
+    <div>
+      <h2><strong><%= @group.region %> - <%= @group.winemaker_profile%></strong></h2>
+    </div>
+          <div class="card-body">
+            <p> Description de mon offre :
+              <hr>
+              <%= @group.ticket_amount %></p>
+
+
   <h1 class='title'>Votre liste de souhaits</h1>
 
-
-
-
-
   <hr>
-
     <ul>
       <% @investments.each do |investment| %>
         <li>
@@ -19,11 +23,27 @@
         </li>
       <% end %>
     </ul>
-
-
   <hr>
 
-
+<div class="cards-top">
+   <% @investments.each do |investment| %>
+    <div class="card-top">
+      <div>
+      <%= cl_image_tag investment.photo.key, height: 200, width: 300, crop: :fill if investment.photo.attached? %>
+      </div>
+      <div class="card-top-infos">
+        <div class="card-top-text">
+          <h2><%= investment.investment_name %> (<%= investment.region %>) (<%= investment.match %> %)</h2>
+        </div>
+        <div class="card-top-button">
+          <div class="btn btn-light">
+            <%= link_to "Plus d'infos", investment_path(investment) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
 
 
