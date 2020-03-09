@@ -1,10 +1,10 @@
-
+<div class="banner-investment"></div>
       <!--  CONTENT -->
   <br>
   <br>
 
       <div class="col-md-12 text-center">
-        <h1><%= @investment.investment_name %></h1>
+        <h1> <strong> <%= @investment.investment_name %> </strong></h1>
         <p><%= @investment.punchline %></p>
         <span class="BPDUh"></span>
         <br>
@@ -50,18 +50,16 @@
              <h3 class="title-invstment"><strong><%= number_to_currency(@investment.investment_total, precision: 0, :unit => " €  ") %></strong></h2>
           </div>
 
-          <% @investment.groups.each do |group|  %>
-          <%= group.name  %>
-          <% end  %>
+          <%# @investment.groups.each do |group|  %>
+          <%#= group.name  %>
+          <%# end  %>
         </div>
 
-
-
-        <button type="button" id="sweet-alert-demo" class="btn-investment w-100">Participer à ce groupement</button>
+        <button type="button" id="sweet-alert-demo" class="btn-investment w-100", onClick="document.getElementById('sweet-alert-demo').disabled = 'disabled'" >Participer à ce groupement</button>
         <p class="title-invstment text-center"> <small>A partir de : </small><strong>€ <%= @investment.ticket_amount %></strong> le ticket</p>
 <!--         <p class="title-invstment text-center"> <small>Fin du projet le : </small><strong>€ <%= @investment.date_of_end %></strong> le ticket</p>
- -->
-      </div>
+<!--  <-->   <!-- button type="button" class=" w-50 text-center"> épingler cet investissement</button> -->
+   </div>
     </div>
 
 </div>
@@ -73,7 +71,7 @@
         <div class="left-element">
 
           <div class="exp-desc">
-            <h2><%= @investment.domaine_name %></h2>
+            <h2> <strong><%= @investment.domaine_name %></strong> </h2>
             <div id="prod"class="key">
               <ul>
                 <p><%= @investment.description  %> </p>
@@ -84,12 +82,15 @@
 
             <div id="prod"class="key">
               <ul>
-                <li><%= image_tag("wine.png", class: "image-wine") %><%= image_tag("wine.png", class: "image-wine") %><%= image_tag("wine.png", class: "image-wine") %></li>
+                <li> <%= image_tag("wine.png", class: "image-wine") %><%= image_tag("wine.png", class: "image-wine") %><%= image_tag("wine.png", class: "image-wine") %></li>
                 <%= @investment.remuneration %>
-
+                <li></li>
+                <li></li>
+                <li></li>
                 <li></li>
                 <li><%= image_tag("plant.png", class: "image-money") %></li>
                 <%= @investment.profitability  %> %
+                <li></li>
                 <li></li>
                 <li></li>
                 <li></li>
@@ -109,7 +110,7 @@
           <div class="day-left">
 
           </div>
-          <h4>Evenements proposés</h4>
+          <h4 class="text-center pb-1"> <strong>Evénements</strong> </h4>
         </div>
 
         <% @investment.offered_services.each do |offer| %>
@@ -120,7 +121,7 @@
               </div>
               <span><strong> <%= offer.title %></strong> </span>
               <hr class="product">
-              <p class="ticket-number"><%= offer.description %></p>
+              <p class="ticket-number p-2"><%= offer.description %></p>
                 <br><br>
             </div>
           </div>

@@ -57,7 +57,7 @@
           <td><small class="text-muted">Statut:</small>   <%= groupuser.status  %></td>
           <td><small class="text-muted"></small>
             <% if groupuser.status == "pending" %>
-             <%= link_to confirm_group_users_group_path(@group), method: :patch do  %>
+             <%= link_to confirm_users_group_path(groupuser), method: :patch do  %>
                <button class="btn btn-outline-danger w-100">Confirmer</button>
 
             <% end %>

@@ -1,9 +1,20 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
 
+@font-face {
+  font-family: 'Maax';
+  font-weight: 400;
+  font-style: normal;
+  src:  local('Maax'),
+        url('/fonts/Maax.woff2') format('woff2'),
+        url('/fonts/Maax.woff') format('woff'),
+        url('/fonts/Maax.ttf') format('truetype');
+  font-display: swap;
+}
+
 // Define fonts for body and headers
-$body-font: "Work Sans", "Helvetica", "sans-serif";
-$headers-font: "Nunito", "Helvetica", "sans-serif";
+$body-font: "Maax", "Helvetica", "sans-serif";
+$headers-font: "Maax", "Helvetica", "sans-serif";
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
@@ -14,3 +25,4 @@ $headers-font: "Nunito", "Helvetica", "sans-serif";
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
+

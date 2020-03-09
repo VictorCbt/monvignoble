@@ -35,12 +35,9 @@ class UsersGroupsController < ApplicationController
   end
 
   def confirm
-    @group = Group.find(params[:group_id])
     @users_group = UsersGroup.find(params[:id])
-    @users_group.group = @group
     @users_group.confirm!
-    @users_group.save!
-    redirect_to group_path(@group)
+    redirect_to group_path(@users_group.group)
   end
 
 private

@@ -18,12 +18,13 @@ Rails.application.routes.draw do
   end
 
   resources :groups, only: [:show, :new, :create, :edit, :update, :destroy] do
-    resources :users_groups, only: [:index, :show] do
-      member do
-        patch :confirm
-      end
-    end
+    resources :users_groups, only: [:index, :show]
   end
 
+  resources :users_groups, only: [] do
+    member do
+      patch :confirm
+    end
+  end
 end
 
