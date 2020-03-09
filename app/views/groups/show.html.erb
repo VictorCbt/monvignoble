@@ -30,6 +30,41 @@
 
 </div>
 
+<div class="container">
+  <hr>
+  <%= link_to "Rejoindre ce groupe", join_request_group_users_groups_path(@group), class: 'btn btn-primary', method: :post %>
+  <hr>
 
-<hr>
-<%= link_to "Rejoindre", join_request_group_users_groups_path(@group), class: 'btn btn-primary', method: :post %>
+
+   <table class="table table-bordered">
+    <h3>Membres de mon groupe</h3>
+    <thead>
+      <tr>
+        <th scope="col">avatar</th>
+        <th scope="col">Nom / Prénom</th>
+        <th scope="col">email</th>
+        <th scope="col">statut</th>
+        <th scope="col">statut</th>
+      </tr>
+    </thead>
+
+  <% @group.users_groups.each do |groupuser|  %>
+      <tbody>
+        <tr>
+          <td><small class="text-muted">Avatar:</small> <%= groupuser.user.avatar  %> </td>
+          <td><small class="text-muted">Par:</small> <%= groupuser.user.first_name  %> <strong><%= groupuser.user.last_name  %></strong>  </td>
+          <td><small class="text-muted">Coordonnées:</small>  <%= groupuser.user.email %> </td>
+          <td><small class="text-muted">Statut:</small>   <%= groupuser.status  %></td>
+          <td><small class="text-muted"></small>
+            <% if groupuser.status == "pending" %>
+             <%= link_to confirm_users_group_path(groupuser), method: :patch do  %>
+               <button class="btn btn-outline-danger w-100">Confirmer</button>
+
+            <% end %>
+            <% else %>
+            <%= "Confirmé" %>
+            <% end %>
+          </td>
+    <% end %>
+  </table>
+</div>

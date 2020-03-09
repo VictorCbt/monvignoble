@@ -1,10 +1,10 @@
-
+<div class="banner-investment"></div>
       <!--  CONTENT -->
   <br>
   <br>
 
       <div class="col-md-12 text-center">
-        <h1><%= @investment.investment_name %></h1>
+        <h1> <strong> <%= @investment.investment_name %> </strong></h1>
         <p><%= @investment.punchline %></p>
         <span class="BPDUh"></span>
         <br>
@@ -19,31 +19,47 @@
 
       <div class="col-4">
         <div class="d-flex">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
+          <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large-invest", alt: "avatar-large" %>
           <div class="align-self-center ml-3"><h4><strong><%= @investment.user.first_name %> <%= @investment.user.last_name %></strong></h4></div>
         </div>
 
         <div class="d-flex" >
-          <div class="align-self-center ml-3">
-            <%= image_tag("wine.png", class: "image-wine") %>
+          <div class="align-self-center">
+            <%= image_tag("wine1.png", class: "image-domaine") %>
           </div>
-          <div class="align-self-center ml-4">
-            <h4 class="pt-3">Appelation</h4>
-            <p> xxx </p>
+          <div class="align-self-center ml-3">
+            <h4 class="pt-3"><%= @investment.designation %></h4>
+            <p class=""> <%= @investment.region  %> </p>
           </div>
         </div>
 
-
         <hr>
-        <p>Groupes intérressés</p>
+        <p>Membres du groupe intérressés</p>
+
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/sarahlafer", class: "avatar-bordered", alt: "avatar-bordered" %>
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/sarahlafer", class: "avatar-bordered", alt: "avatar-bordered" %>
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/sarahlafer", class: "avatar-bordered", alt: "avatar-bordered" %>
         <hr>
-        <button type="button" class="btn-investment w-100">Participer à ce groupement</button>
 
+        <div class="progression d-flex ">
 
-      </div>
+          <div class="align-self-center">
+            <%= image_tag("project.png", class: "image-project") %>
+          </div>
+          <div class="align-self-center ml-3">
+             <h3 class="title-invstment"><strong><%= number_to_currency(@investment.investment_total, precision: 0, :unit => " €  ") %></strong></h2>
+          </div>
+
+          <%# @investment.groups.each do |group|  %>
+          <%#= group.name  %>
+          <%# end  %>
+        </div>
+
+        <button type="button" id="sweet-alert-demo" class="btn-investment w-100", onClick="document.getElementById('sweet-alert-demo').disabled = 'disabled'" >Participer à ce groupement</button>
+        <p class="title-invstment text-center"> <small>A partir de : </small><strong>€ <%= @investment.ticket_amount %></strong> le ticket</p>
+<!--         <p class="title-invstment text-center"> <small>Fin du projet le : </small><strong>€ <%= @investment.date_of_end %></strong> le ticket</p>
+<!--  <-->   <!-- button type="button" class=" w-50 text-center"> épingler cet investissement</button> -->
+   </div>
     </div>
 
 </div>
@@ -55,25 +71,34 @@
         <div class="left-element">
 
           <div class="exp-desc">
-            <h2><%= @investment.domaine_name %></h2>
+            <h2> <strong><%= @investment.domaine_name %></strong> </h2>
             <div id="prod"class="key">
               <ul>
-                <p> du text de description</p>
+                <p><%= @investment.description  %> </p>
               </ul>
             </div>
           </div>
+           <div class="exp-desc">
 
-          <div class="exp-desc">
-            <h2>Mon projet</h2>
             <div id="prod"class="key">
               <ul>
-                <li>icone 1</li>
-                <li>Lancement</li>
-                <li>icone 2</li>
-                <li>2% de rentabilité</li>
-                <li>icone 2</li>
-                <li>2% de rentabilité</li>
-              </ul>
+                <li> <%= image_tag("wine.png", class: "image-wine") %><%= image_tag("wine.png", class: "image-wine") %><%= image_tag("wine.png", class: "image-wine") %></li>
+                <%= @investment.remuneration %>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li><%= image_tag("plant.png", class: "image-money") %></li>
+                <%= @investment.profitability  %> %
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li><%= image_tag("money2.png", class: "image-money") %></li>
+                <%= @investment.winemaker_profile %>
+               </ul>
             </div>
           </div>
 
@@ -85,17 +110,18 @@
           <div class="day-left">
 
           </div>
-          <h4>Evenements proposés</h4>
+          <h4 class="text-center pb-1"> <strong>Evénements</strong> </h4>
         </div>
 
         <% @investment.offered_services.each do |offer| %>
-          <div class="card card-product">
+          <div class="card card-product text-center">
             <div class="card-description product">
-              <div class="icon">
+              <div class="icon text-center">
+                <%= image_tag("Tickets.png", class: "image-ticket") %>
               </div>
               <span><strong> <%= offer.title %></strong> </span>
               <hr class="product">
-              <p class="ticket-number"><%= offer.description %></p>
+              <p class="ticket-number p-2"><%= offer.description %></p>
                 <br><br>
             </div>
           </div>

@@ -12,6 +12,18 @@ class UsersGroupsController < ApplicationController
     @users_group.user = current_user
   end
 
+
+  def show
+    @group = Group.find(params[:group_id])
+    @users_group = UsersGroup.find(params[:id])
+  end
+
+  def index
+    @group = Group.find(params[:group_id])
+    @users_groups = UsersGroup.all
+
+  end
+
   def join_request
     @group = Group.find(params[:group_id])
     @users_group = UsersGroup.new
@@ -20,6 +32,12 @@ class UsersGroupsController < ApplicationController
     @users_group.status = "pending"
     @users_group.save!
     redirect_to group_path(@group)
+  end
+
+  def confirm
+    @users_group = UsersGroup.find(params[:id])
+    @users_group.confirm!
+    redirect_to group_path(@users_group.group)
   end
 
 private

@@ -7,4 +7,9 @@ class UsersGroup < ApplicationRecord
   "waiting"]
 
   validates :status, presence: true, inclusion: { in: STATUSLIST }
+
+  def confirm!
+    update!(status: "validate")
+  end
+
 end

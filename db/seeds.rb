@@ -40,16 +40,18 @@ investment4.photo.attach(io: file4, filename: 'investment4.png', content_type: '
 
 puts "creation photos"
 
-offered_services1 = OfferedService.create!(title: "vendanges et dégustations", description: "participez à des dégustations d'exceptions", investment_id: investment1.id)
-offered_services2 = OfferedService.create!(title: "30 bouteilles/an avec étiquetage", description: "recevez chaque année des caisses de notre vin avec votre propre étiquette", investment_id: investment2.id)
-offered_services3 = OfferedService.create!(title: "50 bouteilles/an sans étiquetage", description: "recevez chaque année des caisse de notre vin", investment_id: investment3.id)
+offered_services1 = OfferedService.create!(title: "Découverte des vendanges", description: "participez à des dégustations d'exceptions", investment_id: investment1.id)
+offered_services2 = OfferedService.create!(title: "Etiquette de bouteille personnalisée", description: "recevez chaque année des caisses de notre vin avec votre propre étiquette", investment_id: investment1.id)
+offered_services3 = OfferedService.create!(title: "Etiquette de bouteille personnalisée", description: "recevez chaque année des caisse de notre vin", investment_id: investment2.id)
+offered_services4 = OfferedService.create!(title: "Découverte des vendanges", description: "participez à des dégustations d'exceptions", investment_id: investment4.id)
+offered_services5 = OfferedService.create!(title: "Etiquette de bouteille personnalisée", description: "recevez chaque année des caisses de notre vin avec votre propre étiquette", investment_id: investment4.id)
 
 puts "creation #{OfferedService.count} offered services"
 
-UsersGroup.create!(user_id: user2.id, group_id: group1.id)
-UsersGroup.create!(user_id: user3.id, group_id: group1.id)
-UsersGroup.create!(user_id: user5.id, group_id: group2.id)
-UsersGroup.create!(user_id: user2.id, group_id: group2.id)
+UsersGroup.create!(user_id: user1.id, group_id: group1.id, status: 'validate')
+UsersGroup.create!(user_id: user3.id, group_id: group1.id, status: 'pending')
+UsersGroup.create!(user_id: user4.id, group_id: group2.id, status: 'validate')
+UsersGroup.create!(user_id: user2.id, group_id: group2.id, status: 'waiting')
 
 group1.investments = [investment1, investment2]
 group1.save
