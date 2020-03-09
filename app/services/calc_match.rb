@@ -57,7 +57,6 @@ class CalcMatch
     end
   end
 
-
   def cal_winemaker_profile
     if @group.winemaker_profile.nil?
       @match += WINEMAKER_PROFILE_WEIGHT
@@ -69,23 +68,3 @@ class CalcMatch
     end
   end
 end
-
-
-  # def match(options = {})
-  #   @calc = 0
-  #   cal_region(option[:region])
-  #   cal_winemaker_profile(option[:winemaker_profile])
-  #   cal_investment_total(option[:investment_total])
-  #   cal_ticket_amount(option[:ticket_amount])
-  #   @calc
-  # end
-
-  # def cal_ticket_amount(option_ticket_amount)
-  #   @calc += 20 # regle de 3 à faire
-  # end
-
-  # def cal_region(option_region)
-  #   return 10 if option_region.nil?
-
-  #   @calc += option_region == self.region ? 10 : 0
-  # end
