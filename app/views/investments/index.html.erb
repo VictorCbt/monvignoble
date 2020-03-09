@@ -1,99 +1,21 @@
 <h1 class='title-page'>Résultat de la recherche</h1>
 <div class="results-container">
 
-
    <div id=filter>
-     <h4><strong>Affine ta recherche :</strong></h2>
-      <%= simple_form_for @group, url: investments_path, method: :get do |f| %>
-        <%= text_field_tag :query, @search_term, placeholder: "Search..." %>
-
-        <hr>
-        <h6>Selectionne une région</h6>
-
-
-        <%= @group.region %>
-
-        <% regions = ["Bordeaux", "Bourgogne", "Vallée du Rhône", "Alsace", "Beaujolais", "Alsace", "Champagne", "Corse", "Jura", "Languedoc-Roussillon", "Provence", "Savoie", "Sud-Ouest", "Vallée de la Loire", "Vallée du Rhônes"] %>
-
-        <%= f.input :region, as: :select, collection: regions %>
-        <%= f.submit %>
-
-        <%= f.input :ticket_amount %>
-        <%= f.submit %>
-
-        <hr>
-        <h6>Sélectionne la valeur d'un ticket</h6>
-        <select name="ticket_amount" id="ticket_amount">
-          <option value="500">500</option>
-          <option value="3000">3000</option>
-          <option value="10000">10 000</option>
-        </select>
-        <%= f.submit %>
-
-        <hr>
-        <h6>Sélectionne une Appellation</h6>
-        <select name="designation" id="designation">
-          <option value="Margaux">Margaux</option>
-          <option value="Saint-Véran">Saint-Véran</option>
-          <option value="Hérmitage">Hermitage</option>
-        </select>
-        <%= f.submit %>
-
-        <hr>
-        <h6>Sélectionne une valeur de parts globales</h6>
-        <select name="total_share" id="total_share">
-          <option value="10">10</option>
-          <option value="30">30</option>
-        </select>
-        <%= f.submit %>
-
-         <hr>
-        <h6>Sélectionne les parts restantes</h6>
-        <select name="share_available" id="share_available">
-          <option value="10">10</option>
-          <option value="3">3</option>
-          <option value="2">2</option>
-        </select>
-        <%= f.submit %>
-
-         <hr>
-        <h6>Sélectionne la rentabilité</h6>
-        <select name="profitability" id="profitability">
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="5">5</option>
-        </select>
-        <%= f.submit %>
-
-        <hr>
-        <h6>Sélectionne les services proposées</h6>
-        <select name="title" id="title">
-          <option value="vendanges et dégustations">vendanges et dégustations</option>
-          <option value="30 bouteilles/an avec étiquetage">30 bouteilles/an avec étiquetage</option>
-          <option value="50 bouteilles/an sans étiquetage">50 bouteilles/an avec étiquetage</option>
-        </select>
-        <%= f.submit %>
-
-        <hr>
-        <h6>Sélectionne le type de vigneron</h6>
-        <select name="winemaker_profile" id="winemaker_profile">
-          <option value="Vigneron Installé">Vigneron Installé</option>
-          <option value="Jeune Vigneron">Jeune Vigneron</option>
-        </select>
-        <%= f.submit %>
-
-        <hr>
-        <h6>Sélectionne le type de redistribution</h6>
-        <select name="deferred_remuneration" id="deferred_remuneration">
-          <option value="true">oui</option>
-          <option value="false">non</option>
-        </select>
-        <%= f.submit %>
-
-      <% end %>
-
+    <%= simple_form_for @group, url: investments_path, method: :get do |f| %>
+      <br>
+      <% regions = ["Bordeaux", "Bourgogne", "Vallée du Rhône", "Alsace", "Beaujolais", "Alsace", "Champagne", "Corse", "Jura", "Languedoc-Roussillon", "Provence", "Savoie", "Sud-Ouest", "Vallée de la Loire", "Vallée du Rhônes"] %>
+      <%= f.input :region, as: :select, label: 'Région viticole :', collection: regions %>
+      <%= f.input :ticket_amount, label: "Montant du ticket d'entrée :" %>
+      <%= f.input :investment_total, label: "Montant de l'investissement total :" %>
+      <%= f.input :share_available, label: "Nombre de parts disponibles :" %>
+      <%= f.input :services, as: :select, label: 'Services proposés par le vigneron :', collection: ["Découverte des vendanges", "Etiquette de bouteille personnalisée"] %>
+      <%= f.input :winemaker_profile, as: :select, label: 'Profil du vigneron :', collection: ["Jeune vigneron", "Vigneron installé"] %>
+      <%= f.input :deferred_remuneration, as: :boolean, label: "Accepte les rétributions différées" %>
+      <hr>
+      <%= f.button :submit, "Valider", class: 'btn btn-primary' %>
+    <% end %>
    </div>
-
 
   <div class="cards-result">
     <div style="list-style-type: none">
