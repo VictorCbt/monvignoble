@@ -1,5 +1,8 @@
 class CalcMatch
-  TICKET_AMOUT_WEIGHT = 20
+  TICKET_AMOUNT_WEIGHT = 30
+  INVESTMENT_TOTAL_WEIGHT = 20
+  REGION_WEIGTH = 40
+  WINEMAKER_PROFILE_WEIGHT = 10
 
   def initialize(group, investment)
     @group      = group
@@ -9,7 +12,9 @@ class CalcMatch
 
   def call
     cal_ticket_amount
-
+    cal_investment_total
+    cal_region
+    cal_winemaker_profile
     @investment.match = @match
   end
 
@@ -17,17 +22,50 @@ class CalcMatch
     new(group, investment).call
   end
 
-
   private
 
   def cal_ticket_amount
     if @group.ticket_amount.nil?
-      @match += TICKET_AMOUT_WEIGHT
+      @match += TICKET_AMOUNT_WEIGHT
     else
-      range = @investment.ticket_amount / 4
+      range = @investment.ticket_amount
       gap = (@investment.ticket_amount - @group.ticket_amount).abs
       return if gap >= range
-      @match += (TICKET_AMOUT_WEIGHT - (TICKET_AMOUT_WEIGHT * gap / range))
+      @match += (TICKET_AMOUNT_WEIGHT - (TICKET_AMOUNT_WEIGHT * gap / range))
+    end
+  end
+
+  def cal_investment_total
+    if @group.investment_total.nil?
+      @match += INVESTMENT_TOTAL_WEIGHT
+    else
+      range = @investment.investment_total / 4
+      gap = (@investment.investment_total - @group.investment_total).abs
+      return if gap >= range
+      @match += (INVESTMENT_TOTAL_WEIGHT - (INVESTMENT_TOTAL_WEIGHT * gap / range))
+    end
+  end
+
+  def cal_region
+     if @group.region.nil?
+      @match += REGION_WEIGTH
+    elsif
+      @group.region == @investment.region
+      @match += REGION_WEIGTH
+    else
+      @match += 0
+    end
+  end
+
+
+  def cal_winemaker_profile
+    if @group.winemaker_profile.nil?
+      @match += WINEMAKER_PROFILE_WEIGHT
+    elsif
+      @group.winemaker_profile == @investment.winemaker_profile
+      @match += WINEMAKER_PROFILE_WEIGHT
+    else
+      @match += 0
     end
   end
 end
@@ -36,12 +74,7 @@ end
   # def match(options = {})
   #   @calc = 0
   #   cal_region(option[:region])
-  #   cal_designation(option[:designation])
   #   cal_winemaker_profile(option[:winemaker_profile])
-  #   cal_deferred_remuneration(option[:deferred_remuneration])
-  #   cal_services(option[:services])
-  #   cal_profitability(option[:profitability])
-  #   cal_share_available(option[:share_available])
   #   cal_investment_total(option[:investment_total])
   #   cal_ticket_amount(option[:ticket_amount])
   #   @calc

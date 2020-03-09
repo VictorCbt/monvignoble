@@ -1,10 +1,32 @@
 <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/442116/pexels-photo-442116.jpeg?cs=srgb&dl=clouds-countryside-cropland-crops-442116.jpg&fm=jpg)">
-  <%= @group.name %>
+  <%= @group.name %> (<%= @group.region %>)
 </div>
 
 <div class="container">
   <h1 class='title'>Votre projet d'investissement</h1>
   <h1 class='title'>Votre liste de souhaits</h1>
+
+
+
+
+
+  <hr>
+
+    <ul>
+      <% @investments.each do |investment| %>
+        <li>
+          <%= investment.investment_name %> (<%= investment.region %>) (<%= investment.match %> %)
+        </li>
+      <% end %>
+    </ul>
+
+
+  <hr>
+
+
+
+
+
   <div class="btn btn-info">
     <%= link_to "Lancer la recherche", root_path %>
   </div>

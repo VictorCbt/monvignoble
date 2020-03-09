@@ -4,28 +4,21 @@
 
    <div id=filter>
      <h4><strong>Affine ta recherche :</strong></h2>
-      <%= form_for :search, url: investments_path, method: :get do |f| %>
+      <%= simple_form_for @group, url: investments_path, method: :get do |f| %>
         <%= text_field_tag :query, @search_term, placeholder: "Search..." %>
 
         <hr>
         <h6>Selectionne une région</h6>
-        <select name="region" id="region">
-          <option value="Bordeaux">Bordeaux</option>
-          <option value="Bourgogne">Bourgogne</option>
-          <option value="Vallée du Rhône">Vallée du Rhône</option>
-          <option value="Alsace">Alsace</option>
-          <option value="Beaujolais">Beaujolais</option>
-          <option value="Alsace">Alsace</option>
-          <option value="Champagne">Champagne</option>
-          <option value="Corse">Corse</option>
-          <option value="Jura">Jura</option>
-          <option value="Languedoc-Roussillon">Languedoc-Roussillon</option>
-          <option value="Provence">Provence</option>
-          <option value="Savoie">Savoie</option>
-          <option value="Sud-Ouest">Sud-Ouest</option>
-          <option value="Vallée de la Loire">Vallée de la Loire</option>
-          <option value="Vallée du Rhônes">Vallée du Rhône</option>
-        </select>
+
+
+        <%= @group.region %>
+
+        <% regions = ["Bordeaux", "Bourgogne", "Vallée du Rhône", "Alsace", "Beaujolais", "Alsace", "Champagne", "Corse", "Jura", "Languedoc-Roussillon", "Provence", "Savoie", "Sud-Ouest", "Vallée de la Loire", "Vallée du Rhônes"] %>
+
+        <%= f.input :region, as: :select, collection: regions %>
+        <%= f.submit %>
+
+        <%= f.input :ticket_amount %>
         <%= f.submit %>
 
         <hr>
@@ -111,7 +104,7 @@
           </div>
           <div class="card-result-text">
             <div class="card-result-infos">
-              <h2><%= investment.domaine_name %></h2>
+              <h2><%= investment.domaine_name %> (<%= investment.match %> %)</h2>
               <p><%= investment.region %> - <%= investment.designation %></p>
               <hr>
               <h2>Chouchouté par <%= investment.user.first_name %> <%= investment.user.last_name %></h2>
