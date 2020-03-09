@@ -53,6 +53,18 @@ UsersGroup.create!(user_id: user3.id, group_id: group1.id, status: 'pending')
 UsersGroup.create!(user_id: user4.id, group_id: group2.id, status: 'validate')
 UsersGroup.create!(user_id: user2.id, group_id: group2.id, status: 'waiting')
 
+puts "creation #{UsersGroup.count} group user"
+
+InvestmentsGroup.create!(investment_id:investment2.id, group_id: group2.id)
+InvestmentsGroup.create!(investment_id:investment1.id, group_id: group2.id)
+InvestmentsGroup.create!(investment_id:investment1.id, group_id: group1.id)
+InvestmentsGroup.create!(investment_id:investment2.id, group_id: group1.id)
+InvestmentsGroup.create!(investment_id:investment3.id, group_id: group2.id)
+InvestmentsGroup.create!(investment_id:investment3.id, group_id: group1.id)
+
+puts "creation #{InvestmentsGroup.count} investment group"
+
+
 group1.investments = [investment1, investment2]
 group1.save
 

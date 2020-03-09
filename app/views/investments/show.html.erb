@@ -32,30 +32,54 @@
             <p class=""> <%= @investment.region  %> </p>
           </div>
         </div>
-
-        <hr>
-        <p>Membres du groupe intérressés</p>
-
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/sarahlafer", class: "avatar-bordered", alt: "avatar-bordered" %>
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/sarahlafer", class: "avatar-bordered", alt: "avatar-bordered" %>
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/sarahlafer", class: "avatar-bordered", alt: "avatar-bordered" %>
-        <hr>
-
         <div class="progression d-flex ">
 
           <div class="align-self-center">
             <%= image_tag("project.png", class: "image-project") %>
           </div>
           <div class="align-self-center ml-3">
-             <h3 class="title-invstment"><strong><%= number_to_currency(@investment.investment_total, precision: 0, :unit => " €  ") %></strong></h2>
+             <h3 class="title-invstment"><strong><%= number_to_currency(@investment.investment_total, precision: 0, :unit => " €  ") %></strong></h3>
           </div>
 
-          <%# @investment.groups.each do |group|  %>
-          <%#= group.name  %>
-          <%# end  %>
         </div>
 
-        <button type="button" id="sweet-alert-demo" class="btn-investment w-100", onClick="document.getElementById('sweet-alert-demo').disabled = 'disabled'" >Participer à ce groupement</button>
+        <hr>
+        <% @investment.groups.each do |group|  %>
+
+
+        <div class="d-flex" >
+          <div class="align-self-center">
+            <p><%= image_tag "https://dwj199mwkel52.cloudfront.net/assets/lewagon-logo-square-fe76916e1b923ade71e253ae6dc031d936e5e8eebac4e26b0fbac650ea6ee360.png", class: "avatar-bordered", alt: "avatar-bordered" %></p>
+          </div>
+          <div class="align-self-center ml-3">
+            <p class=""> <%= group.name %> </p>
+          </div>
+        </div>
+
+        <div class="d-flex" >
+          <div class="align-self-center">
+
+            <% i_total = @investment.investment_total %>
+            <% i_collect = i_total - group.investment_total %>
+            <% ticket = @investment.ticket_amount %>
+
+            <p>collectés : <h5 style="color:#86B04A"><strong><%= number_to_currency(i_total - group.investment_total, precision: 0, :unit => " €  ") %></strong></h5></p>
+            <div class="progress">
+                 <div class="progress-bar" role="progressbar" aria-valuenow="<%=(i_collect*100/i_total)%>" aria-valuemin="<%=(i_collect*100/i_total)%>" aria-valuemax="100"></div>
+              </div>
+            <progress value="<%=(i_collect*100/i_total)%>" max="100">
+          </div>
+
+          <div class="align-self-center ml-3">
+            <p><strong> <h5 style="color:#86B04A"><%= (((i_total) - (i_collect)) / (ticket)) %></strong></h5>parts restantes </p>
+            <button type="button" id="sweet-alert-demo" class="btn-investment w-100", onClick="document.getElementById('sweet-alert-demo').disabled = 'disabled'" >Rejoindre</button>
+          </div>
+        </div>
+          <p> <%#= link_to group.name, join_request_group_users_groups_path(group) %> </p>
+        <hr>
+        <% end %>
+
+
         <p class="title-invstment text-center"> <small>A partir de : </small><strong>€ <%= @investment.ticket_amount %></strong> le ticket</p>
 <!--         <p class="title-invstment text-center"> <small>Fin du projet le : </small><strong>€ <%= @investment.date_of_end %></strong> le ticket</p>
 <!--  <-->   <!-- button type="button" class=" w-50 text-center"> épingler cet investissement</button> -->
@@ -76,16 +100,10 @@
               <ul>
                 <p><%= @investment.description  %> </p>
               </ul>
-            </div>
-          </div>
-           <div class="exp-desc">
 
-            <div id="prod"class="key">
               <ul>
                 <li> <%= image_tag("wine.png", class: "image-wine") %><%= image_tag("wine.png", class: "image-wine") %><%= image_tag("wine.png", class: "image-wine") %></li>
                 <%= @investment.remuneration %>
-                <li></li>
-                <li></li>
                 <li></li>
                 <li></li>
                 <li><%= image_tag("plant.png", class: "image-money") %></li>
@@ -94,13 +112,18 @@
                 <li></li>
                 <li></li>
                 <li></li>
-                <li></li>
-                <li></li>
                 <li><%= image_tag("money2.png", class: "image-money") %></li>
                 <%= @investment.winemaker_profile %>
                </ul>
+
             </div>
           </div>
+
+           <div class="exp-desc">
+
+
+          </div>
+
 
 
         </div>
@@ -122,7 +145,7 @@
               <span><strong> <%= offer.title %></strong> </span>
               <hr class="product">
               <p class="ticket-number p-2"><%= offer.description %></p>
-                <br><br>
+
             </div>
           </div>
           <br>
