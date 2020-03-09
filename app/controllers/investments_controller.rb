@@ -2,8 +2,9 @@ class InvestmentsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :show]
 
   def index
-    @investments = InvestmentSearch.new(params).apply_search
-    # @investments = Investment.all
+    # @investments = InvestmentSearch.new(params).apply_search
+    @group = params.key?(:group) ? Group.new(group_params_search) : Group.new
+    @investments = InvestmentsByGroup.call(@group)
   end
 
   def new
@@ -50,6 +51,23 @@ private
       :bio, :region, :designation, :ticket_amount, :investment_total, :share_available,
       :total_share, :profitability, :remuneration, :winemaker_profile,
       :deferred_remuneration, :date_of_end, :photo
+    )
+  end
+
+
+  def group_params_search
+    params.require(:group).permit(
+      :region,
+      :designation,
+      :profitability,
+      :share_available,
+      :investment_total,
+      :ticket_amount,
+      :winemaker_profil,
+      :deferred_remunation,
+      :votes,
+      :services,
+      :name
     )
   end
 end
