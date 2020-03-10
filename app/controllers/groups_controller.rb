@@ -52,11 +52,11 @@ class GroupsController < ApplicationController
       :ticket_amount,
       :share_available,
       :investment_total,
-      :services,
-      :winemaker_profil,
+      :winemaker_profile,
       :deferred_remuneration,
       :votes,
-      :profitability
+      :profitability,
+      services: []
     )
   end
 end
