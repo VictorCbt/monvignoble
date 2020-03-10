@@ -1,3 +1,15 @@
+.group-block {
+  background-color: white;
+  width: 50%;
+  margin: 20px 10px;
+}
+
+.group-title {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
 .cards-top {
   display: flex;
   flex-wrap: wrap;
@@ -13,11 +25,15 @@
   border-radius: 5px;
   margin: 10px;
   padding: 20px;
-  width: 48%;
+  width: 45%;
+}
+
+.card-top > img {
+  border-radius: 5px;
 }
 
 .card-top h2 {
-  font-size: 16px;
+  font-size: 12px;
   padding-bottom: 10px;
   font-weight: bold;
   margin: 0;
@@ -30,15 +46,20 @@
   margin: 0;
 }
 
-.card-top-infos {
+
+.card-top .card-top-infos {
   padding: 16px;
-  width: 100%;
+  width: 200px;
+  display: flex;
+}
+
+.card-top .card-top-pricing {
+  padding: 16px;
+  width: 200px;
+  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.card-top-infos .card-top-button {
-  display: flex;
-  justify-content : space-around;
-}
+
