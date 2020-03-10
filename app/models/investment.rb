@@ -8,7 +8,7 @@ class Investment < ApplicationRecord
   has_one_attached :photo
 
   validates :investment_name, presence: true, uniqueness: true
-  validates :punchline, presence: true, uniqueness: true
+  validates :punchline, presence: true
   validates :winemaker_name, presence: true
   validates :domaine_name, presence: true
   validates :description, presence: true
