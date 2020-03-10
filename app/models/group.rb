@@ -2,9 +2,8 @@ class Group < ApplicationRecord
   belongs_to :admin, foreign_key: :user_id, class_name: "User"
   has_many :users_groups
   has_many :users, through: :users_groups
-  belongs_to :selected_investment, foreign_key: :investment_id , class_name: "Investment", optional: true
-  has_many :investments_groups, dependent: :destroy
-  has_many :investments, through: :investments_groups
+
+  belongs_to :investment, optional: true
 
   SERVICES = ["Découverte des vendanges",
     "Etiquette de bouteille personnalisée",
@@ -22,7 +21,7 @@ class Group < ApplicationRecord
   private
 
   def clean_empty_services
-    services.reject! { |x| x.blank? }
+    services.reject! { |x| x.blank? } if services
   end
 
   def services_inclusion
