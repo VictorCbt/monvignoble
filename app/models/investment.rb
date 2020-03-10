@@ -1,6 +1,6 @@
 class Investment < ApplicationRecord
   has_many :investments_groups
-  has_many  :groups, through: :investments_groups
+  has_many :groups, through: :investments_groups
   has_one :group, foreign_key: :selected_investment_id
   belongs_to :user
   has_many :offered_services, dependent: :destroy
@@ -8,7 +8,7 @@ class Investment < ApplicationRecord
   has_one_attached :photo
 
   validates :investment_name, presence: true, uniqueness: true
-  validates :punchline, presence: true, uniqueness: true
+  validates :punchline, presence: true
   validates :winemaker_name, presence: true
   validates :domaine_name, presence: true
   validates :description, presence: true

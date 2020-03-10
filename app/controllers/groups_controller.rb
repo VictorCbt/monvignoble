@@ -25,9 +25,12 @@ class GroupsController < ApplicationController
 
   def update
     @group = Group.find(params[:id])
-    @group.update!(group_params)
-
-    redirect_to group_path(@group)
+    @group.admin = current_user
+    if @group.update!(group_params)
+      redirect_to group_path(@group)
+    else
+      render 'new'
+    end
   end
 
   def destroy
@@ -42,21 +45,18 @@ class GroupsController < ApplicationController
 
   def group_params
     params.require(:group).permit(
+      :name,
       :status,
       :region,
       :designation,
-      :profitability,
+      :ticket_amount,
       :share_available,
       :investment_total,
-      :ticket_amount,
-      :winemaker_profil,
-      :deferred_remunation,
-      :votes,
       :services,
-      :name
+      :winemaker_profil,
+      :deferred_remuneration,
+      :votes,
+      :profitability
     )
   end
 end
-
-
-
