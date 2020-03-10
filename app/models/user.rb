@@ -30,6 +30,10 @@ class User < ApplicationRecord
     return user
   end
 
+  def my_group
+    Group.where(admin: self).first
+  end
+
   def avatar
     read_attribute(:avatar) || "http://placehold.it/30x30"
   end
