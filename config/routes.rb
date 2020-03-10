@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :users_groups, only: [] do
       collection do
         post :join_request
+        post :invite
       end
     end
   end
