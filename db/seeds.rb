@@ -13,11 +13,11 @@ user3 = User.create!(email: "matthieu@cartillier.com", first_name: "Matthieu", l
 user4 = User.create!(email: "benjamin@jolivot.com", first_name: "Benjamin", last_name: "Jolivot", avatar: "https://ca.slack-edge.com/T02NE0241-UBNMHLAFL-04160ba4ae61-512", password: "123456", password_confirmation: "123456")
 user5 = User.create!(email: "emmanuelle@nadal.com", first_name: "Emmanuelle", last_name: "Nadal", avatar: "https://avatars2.githubusercontent.com/u/42236101?s=400&v=4", password: "123456", password_confirmation: "123456")
 
-user6 = User.create!(email: "guillaume@boissonnet.com", first_name: "Guillaume", last_name: "Boissonnet", avatar: "https://media-exp1.licdn.com/dms/image/C4D03AQGElxR8TGK0hA/profile-displayphoto-shrink_800_800/0?e=1589414400&v=beta&t=0l-4FNUC9s2_IImIx6l8JrsOUMBwgKYmP5ewELrTXYo", password: "123456", password_confirmation: "123456")
-user7 = User.create!(email: "sebastien@chabal.com", first_name: "Sébastien", last_name: "Chabal", avatar: "https://medias.laprovence.com/CtQ8TAQ2z8unPif6cjMaUaLZVk0=/850x575/top/smart/c498e64ee5bc4be38b76ef92410c60d2/chabal_d.jpg", password: "123456", password_confirmation: "123456")
-user8 = User.create!(email: "laetitia@allemand.com", first_name: "Laetitia", last_name: "Allemand", avatar: "https://www.avenuedesvins.fr/modules/leoblog/views/img/b/b-domaine_allemand-laetitia_allemand.jpg", password: "123456", password_confirmation: "123456")
-user9 = User.create!(email: "gaetan@lafoy.com", first_name: "Gaetan", last_name: "Lafoy", avatar: "http://user-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,f_auto,h_3000,q_90,w_1200/729924/P1030893_nxawjq.jpg", password: "123456", password_confirmation: "123456")
-user10 = User.create!(email: "fanny@prunier.com", first_name: "Fanny", last_name: "Prunier", avatar: "https://images.larepubliquedespyrenees.fr/2017/10/30/59f6ae85a43f5e057a01afe8/golden/1000x625/celine-oulie-travaille.jpg", password: "123456", password_confirmation: "123456")
+user6 = User.create!(email: "guillaume@boissonnet.com", first_name: "Guillaume", last_name: "Boissonnet", avatar: "https://media-exp1.licdn.com/dms/image/C4D03AQGElxR8TGK0hA/profile-displayphoto-shrink_200_200/0?e=1589414400&v=beta&t=GikaHo7lfsGw7gNtYINm5hifEvesPXENQGgY4TSvdqE", password: "123456", password_confirmation: "123456")
+user7 = User.create!(email: "sebastien@chabal.com", first_name: "Sébastien", last_name: "Chabal", avatar: "chabal.png", password: "123456", password_confirmation: "123456")
+user8 = User.create!(email: "laetitia@allemand.com", first_name: "Laetitia", last_name: "Allemand", avatar: "letitia.png", password: "123456", password_confirmation: "123456")
+user9 = User.create!(email: "gaetan@lafoy.com", first_name: "Gaetan", last_name: "Lafoy", avatar: "gaetan.png", password: "123456", password_confirmation: "123456")
+user10 = User.create!(email: "fanny@prunier.com", first_name: "Fanny", last_name: "Prunier", avatar: "fanny.png", password: "123456", password_confirmation: "123456")
 
 
 puts "creation #{User.count} users"
@@ -99,6 +99,12 @@ InvestmentsGroup.create!(investment_id:investment1.id, group_id: group1.id)
 InvestmentsGroup.create!(investment_id:investment2.id, group_id: group1.id)
 InvestmentsGroup.create!(investment_id:investment3.id, group_id: group2.id)
 InvestmentsGroup.create!(investment_id:investment3.id, group_id: group1.id)
+InvestmentsGroup.create!(investment_id:investment4.id, group_id: group2.id)
+InvestmentsGroup.create!(investment_id:investment4.id, group_id: group1.id)
+InvestmentsGroup.create!(investment_id:investment5.id, group_id: group2.id)
+InvestmentsGroup.create!(investment_id:investment5.id, group_id: group1.id)
+InvestmentsGroup.create!(investment_id:investment6.id, group_id: group2.id)
+InvestmentsGroup.create!(investment_id:investment6.id, group_id: group1.id)
 
 puts "creation #{InvestmentsGroup.count} investment group"
 
