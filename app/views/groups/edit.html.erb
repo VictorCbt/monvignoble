@@ -4,14 +4,13 @@
     <div class="col-md-8">
       <%= simple_form_for @group do |f| %>
         <%= f.input :name, label: 'Nom du groupe' %>
-        <%= f.input :status, label: 'Statut du groupe', collection: ["Privé", "Public"] %>
         <%= f.input :region, label: 'Région(s) viticole(s) souhaitée(s)', collection: ["Alsace", "Beaujolais", "Bordeaux", "Bourgogne", "Champagne", "Corse", "Jura", "Languedoc-Roussillon", "Provence", "Savoie", "Sud-Ouest", "Vallée de la Loire", "Vallée du Rhône"] %>
         <%= f.input :designation, label: 'Appellation(s) souhaitée(s)' %>
         <%= f.input :ticket_amount, label: "Ticket d'entrée" %>
         <%= f.input :share_available, label: 'Parts disponibles' %>
         <%= f.input :investment_total, label: "Montant de l'investissement total" %>
-        <%= f.input :services, label: 'Services proposés par le vigneron', collection: ["Découverte des vendanges", "Etiquette de bouteille personnalisée", "Invitation à la dégustation annuelle", "Visite du domaine", "Initiation au processus de vinification"] %>
-        <%= f.input :winemaker_profile, label: 'Profil du vigneron', collection: ["Jeune vigneron", "Vigneron installé"] %>
+        <%= f.input :services, label: 'Services proposés par le vigneron', collection: ["Découverte des vendanges", "Etiquette de bouteille personnalisée", "Invitation à la dégustation annuelle", "Visite du domaine", "Initiation au processus de vinification"], input_html: { multiple: true } %>
+        <%= f.input :winemaker_profile, label: 'Profil du vigneron', collection: ["Jeune vigneron", "Vigneron installé"], include_blank: false %>
         <%= f.input :deferred_remuneration, label: 'Accepte les rémunérations différées', as: :boolean %>
         <%= f.button :submit, "Valider", class: 'btn btn-primary' %>
       <% end %>
