@@ -1,28 +1,4 @@
-<h2>Sign up</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -30,22 +6,26 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <br>
-<br>
 
 <div class="container h-100">
+<!--   <h1 class="text-center" style="color: #a23e48">Inscription</h1>
+ -->
+<br><br><br><br>
     <div class="d-flex justify-content-center h-100">
       <div class="user_card">
         <div class="d-flex justify-content-center">
           <div class="brand_logo_container">
             <img src="http://localhost:3000/assets/logo-9b970bfc81e3436cfa576e74e4560b5bd131eb808d096ad1af6e1ad0118c511d.png" class="brand_logo" alt="Logo">
           </div>
+              <br>
         </div>
         <div class="d-flex justify-content-center form_container">
+
           <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= f.error_notification %>
           <form>
 
-            <div class="input-group mb-3">
+            <div class="input-group ">
               <div class="input-group-append">
                 <span class="input-group-text"><i class="fas fa-user"></i></span>
               </div>
@@ -58,7 +38,7 @@
                     label: false %>
                 </div>
             </div>
-            <div class="input-group mb-1">
+            <div class="input-group ">
               <div class="input-group-append">
                 <span class="input-group-text"><i class="fas fa-key"></i></span>
               </div>
@@ -66,24 +46,26 @@
                 <%= f.input :password,
                 required: true,
                 placeholder: 'new-password',
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                # hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                 input_html: { autocomplete: "new-password" },
                 label: false %>
               </div>
             </div>
-            <div class="input-group mb-1">
+            <div class="input-group ">
               <div class="input-group-append">
                 <span class="input-group-text"><i class="fas fa-key"></i></span>
               </div>
               <div>
                 <%= f.input :password_confirmation,
                 required: true,
-                placeholder: 'new-password',
-                input_html: { autocomplete: "new-password" },
+                placeholder: 'Confirmer',
+                input_html: { autocomplete: "Confirmer" },
                 label: false %>
               </div>
             </div>
+             <br>
             <div class="d-flex justify-content-center mt-1 login_container">
+
               <button class="btn login_btn btn_btn_login"><%= f.button :submit, "S'enregistrer" %></button>
            </div>
            <% end %>
@@ -92,6 +74,7 @@
 
         <div >
             <div class="justify-content-center align px-4 m-2 pt-1 ">
+              <br>
               <%= render "devise/shared/links" %>
             </div>
 
@@ -101,3 +84,26 @@
     </div>
   </div>
 
+<!-- <h2>Sign up</h2>
+
+<%#= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%#= f.error_notification %>
+
+  <div class="form-inputs">
+    <%#= f.input :email,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "email" }%>
+    <%#= f.input :password,
+                required: true,
+                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                input_html: { autocomplete: "new-password" } %>
+    <%#= f.input :password_confirmation,
+                required: true,
+                input_html: { autocomplete: "new-password" } %>
+  </div>
+
+  <div class="form-actions">
+    <%#= f.button :submit, "Sign up" %>
+  </div> -->
+<%# end %>

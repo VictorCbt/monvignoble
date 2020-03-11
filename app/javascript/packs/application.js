@@ -10,6 +10,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 import initSelect2 from '../plugins/init_select2.js'
+import initSelect3 from '../plugins/init_select2.js'
 import initGlasses from '../plugins/init_glasses.js'
 
 loadDynamicBannerText();
@@ -24,5 +25,6 @@ initSweetalert('#sweet-alert-demo', {
   icon: "success"
 });
 
-initSelect2()
-initGlasses()
+initSelect2();
+initSelect3();
+initGlasses();

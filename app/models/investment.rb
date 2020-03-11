@@ -21,6 +21,13 @@ class Investment < ApplicationRecord
   validates :winemaker_profile, presence: true, inclusion: { in: ["Jeune vigneron", "Vigneron installé"] }, allow_nil: true
 
   attr_accessor :match
+
+  def completion_percentage_for(group)
+    (((group.users.count + 1) * ticket_amount.to_f) / investment_total) * 100
+  end
+
+  def reminain_
+
 end
 
 

@@ -1,19 +1,66 @@
 <h1 class='title-page'>Créer votre groupe d'investisseurs</h1>
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <%= simple_form_for @group do |f| %>
-        <%= f.input :name, label: 'Nom du groupe' %>
-        <%= f.input :region, label: 'Région(s) viticole(s) souhaitée(s)', collection: ["Alsace", "Beaujolais", "Bordeaux", "Bourgogne", "Champagne", "Corse", "Jura", "Languedoc-Roussillon", "Provence", "Savoie", "Sud-Ouest", "Vallée de la Loire", "Vallée du Rhône"] %>
-        <%= f.input :designation, label: 'Appellation(s) souhaitée(s)' %>
-        <%= f.input :ticket_amount, label: "Ticket d'entrée" %>
-        <%= f.input :share_available, label: 'Parts disponibles' %>
-        <%= f.input :investment_total, label: "Montant de l'investissement total" %>
-        <%= f.input :services, label: 'Services proposés par le vigneron', collection: ["Découverte des vendanges", "Etiquette de bouteille personnalisée", "Invitation à la dégustation annuelle", "Visite du domaine", "Initiation au processus de vinification"], input_html: { multiple: true } %>
-        <%= f.input :winemaker_profile, label: 'Profil du vigneron', collection: ["Jeune vigneron", "Vigneron installé"] %>
-        <%= f.input :deferred_remuneration, label: 'Accepte les rémunérations différées', as: :boolean %>
-        <%= f.button :submit, "Valider", class: 'btn btn-primary' %>
-      <% end %>
+<br><br>
+<div class="container h-100">
+<!--   <h1 class="text-center" style="color: #a23e48">Inscription</h1>
+ -->
+
+    <div class="d-flex justify-content-center h-100">
+      <div class="user_card_form_group">
+
+        <div class="d-flex justify-content-center form_container">
+          <%= simple_form_for @group do |f| %>
+          <form>
+            <div class=" ">
+              <p style="color:#a23e48"><strong>Nom du groupe</strong></p>
+                <%= f.input :name, placeholder:'', label: false%>
+            </div>
+            <div class="w-100">
+                <p style="color:#a23e48"><strong>Région viticole souhaitée</strong></p>
+                <%= f.input :region, placeholder: '', input_html: { class: 'select3'}, collection: ["Alsace", "Beaujolais", "Bordeaux", "Bourgogne", "Champagne", "Corse", "Jura", "Languedoc-Roussillon", "Provence", "Savoie", "Sud-Ouest", "Vallée de la Loire", "Vallée du Rhône"], label: false %>
+            </div>
+            <div class=" ">
+                <p style="color:#a23e48"><strong>Appellation</strong></p>
+                <%= f.input :designation, placeholder: '', input_html: { class: 'select2'}, label: false %>
+            </div>
+             <div class="">
+              <p style="color:#a23e48"><strong>Ticket</strong></p>
+                <%= f.input :ticket_amount, placeholder: "Montant", input_html: { class: 'select2'}, label:false %>
+            </div>
+             <div class="">
+              <p style="color:#a23e48"><strong>Investissement total</strong></p>
+                  <%= f.input :investment_total, placeholder: "Montant", label:false %>
+            </div>
+
+              <div class="">
+                <p style="color:#a23e48"><strong>Services</strong></p>
+                <%= f.input :services, label: 'Services proposés par le vigneron', collection: ["Découverte des vendanges", "Etiquette de bouteille personnalisée", "Invitation à la dégustation annuelle", "Visite du domaine", "Initiation au processus de vinification"], input_html: { multiple: true }, label:false  %>
+              </div>
+
+             <div class="">
+              <p style="color:#a23e48"><strong>Profil</strong></p>
+                <%= f.input :winemaker_profile, label: 'Profil du vigneron', collection: ["Jeune vigneron", "Vigneron installé"], label:false %>
+            </div>
+             <br>
+
+            <div class="pb-3">
+                <%= f.button :submit, "Valider", class: 'btn btn-outline-danger w-100' %>
+                  <% end %>
+           </div>
+                 </div>
+
+          </form>
+        </div>
+
+        <div >
+            <div class="justify-content-center align px-4 m-2 pt-1 ">
+
+            </div>
+
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+
+
+
