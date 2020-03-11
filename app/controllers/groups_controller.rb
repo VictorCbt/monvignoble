@@ -41,9 +41,11 @@ class GroupsController < ApplicationController
   end
 
   def set_favori
-    puts "hello"
+    @group = Group.find(params[:id])
+    @investment = Investment.find(params[:investment_id])
+    @group.update!(investment: @investment)
+    @investments = InvestmentsByGroup.call(@group)
   end
-
 
   private
 
@@ -58,6 +60,7 @@ class GroupsController < ApplicationController
       :investment_total,
       :winemaker_profile,
       :deferred_remuneration,
+      :investment_id,
       :votes,
       :profitability,
       services: []

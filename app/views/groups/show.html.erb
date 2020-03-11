@@ -1,134 +1,104 @@
 <body class="body-investment">
 
-<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/442116/pexels-photo-442116.jpeg?cs=srgb&dl=clouds-countryside-cropland-crops-442116.jpg&fm=jpg)">
-  <%= @group.name %>
-</div>
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/442116/pexels-photo-442116.jpeg?cs=srgb&dl=clouds-countryside-cropland-crops-442116.jpg&fm=jpg)">
+    <%= @group.name %>
+  </div>
 
-<div class="container">
-  <div class="d-flex">
-    <div class="w-50">
-      <div class="group-block">
-        <div class="group-title">
-          <h2 class='class=-title'>Votre projet d'investissement</h2>
-          <div class="card-offre-button">
-            <div class="btn btn-primary">
-              <%= link_to "Mettre à jour", edit_group_path(@group) %>
-            </div>
+  <div class="container">
+    <hr>
+    <div class="group-block">
+      <h4 class="group-title">Inviter des personnes à rejoindre le groupe</h4>
+      <div class="form-group d-flex align-items-center">
+        <% available_users = User.all.to_a %>
+        <% available_users.reject! {|u| u.id == @group.user_id } %>
+        <% available_users.reject! {|u| u.in? @group.users } %>
+        <%= form_tag(invite_group_users_groups_path(@group), style: 'width: 100%;') do %>
+          <%= select_tag "user_ids", options_from_collection_for_select(available_users, "id", "email"), multiple: true, class: 'form-control select2', style: "width: 100%;" %>
+          <%= submit_tag "inviter", class: "btn-invest-first btn-invest-test" %>
+        <% end %>
+      </div>
+    </div>
+    <hr>
+    <div class="group-block">
+      <table class="table table-bordered">
+        <h4 class="group-title">Investisseurs membres du groupe</h4>
+        <thead>
+          <tr>
+            <th scope="col">Nom</th>
+            <th scope="col">Statut du compte</th>
+            <th scope="col">Profil</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><small class="text-muted"></small> <%= image_tag @group.admin.avatar, class: "avatar-bordered", alt: "avatar-bordered" %> <%= @group.admin.first_name  %> <strong><%= @group.admin.last_name  %></strong> </td>
+            <td><small class="text-muted"></small>Approuvé</td>
+            <td><small class="text-muted"></small>ADMIN</td>
+          </tr>
+        <% @group.users_groups.each do |groupuser|  %>
+          <tr>
+            <td><small class="text-muted"></small> <%= image_tag groupuser.user.avatar, class: "avatar-bordered", alt: "avatar-bordered" %> <%= groupuser.user.first_name  %> <strong><%= groupuser.user.last_name  %></strong> </td>
+            <td><small class="text-muted"></small>
+              <% if groupuser.status == "validate" %>
+                <%= "Approuvé" %>
+              <% elsif groupuser.status == "waiting" %>
+                <%= "Invitation envoyée" %>
+              <% else %>
+                <%= "Demande à confirmer" %>
+              <% end %>
+            </td>
+            <td><small class="text-muted"></small>
+              <% if groupuser.status == "pending" %>
+               <%= link_to confirm_users_group_path(groupuser), method: :patch do  %>
+                 <button class="btn btn-outline-danger w-100">Confirmer</button>
+              <% end %>
+              <% else %>
+              <%= "Membre" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+    <hr>
+    <div class="group-block">
+      <div class="group-title">
+        <h4 class="group-title">Votre projet d'investissement</h4>
+        <div class="card-offre-button">
+          <div class="btn btn-primary">
+            <%= link_to "Mettre à jour", edit_group_path(@group) %>
           </div>
         </div>
-        <div class="card-body">
-          <p>Région viticole : <%= @group.region %></p>
-          <p>Appellation : <%= @group.designation %></p>
-          <p>Montant du ticket d'entrée : <%= @group.ticket_amount %></p>
-          <p>Parts disponibles : <%= @group.share_available %></p>
-          <p>Montant total de l'investissement : <%= @group.investment_total %></p>
-          <p>Services proposés par le vigneron : <% @group.services&.each do |service| %>
-            <%= service %>,
-            <% end %>
-          </p>
-          <p>Profil du vigneron : <%= @group.winemaker_profile %></p>
-          <p>Accepte les rétributions différées : <%= @group.deferred_remuneration %></p>
-        </div>
       </div>
-      <div class="group-block">
-        <table class="table table-bordered">
-          <h2 class='class=-title'>Investisseurs membres du groupe</h2>
-          <thead>
-            <tr>
-              <th scope="col">Nom</th>
-              <th scope="col">Apport</th>
-              <th scope="col">Statut</th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><small class="text-muted"></small> <%= image_tag @group.admin.avatar, class: "avatar-bordered", alt: "avatar-bordered" %> <%= @group.admin.first_name  %> <strong><%= @group.admin.last_name  %></strong> </td>
-              <td><small class="text-muted"></small>   <%= @group.ticket_amount  %> €</td>
-              <td><small class="text-muted"></small>validate</td>
-              <td><small class="text-muted"></small>ADMIN</td>
-            </tr>
-          <% @group.users_groups.each do |groupuser|  %>
-            <tr>
-              <td><small class="text-muted"></small> <%= image_tag groupuser.user.avatar, class: "avatar-bordered", alt: "avatar-bordered" %> <%= groupuser.user.first_name  %> <strong><%= groupuser.user.last_name  %></strong> </td>
-              <td><small class="text-muted"></small>   <%= @group.ticket_amount  %> €</td>
-              <td><small class="text-muted"></small>   <%= groupuser.status  %></td>
-              <td><small class="text-muted"></small>
-                <% if groupuser.status == "pending" %>
-                 <%= link_to confirm_users_group_path(groupuser), method: :patch do  %>
-                   <button class="btn btn-outline-danger w-100">Confirmer</button>
-                <% end %>
-                <% else %>
-                <%= "Confirmé" %>
-                <% end %>
-              </td>
-            </tr>
+      <div class="card-body">
+        <p><strong>Région viticole souhaitée :</strong> <%= @group.region %></p>
+        <p><strong>Appellation souhaitée :</strong> <%= @group.designation %></p>
+        <p><strong>Montant du ticket d'entrée souhaité :</strong> <%= @group.ticket_amount %></p>
+        <p><strong>Montant total de l'investissement souhaité :</strong> <%= @group.investment_total %></p>
+        <p><strong>Services proposés par le vigneron souhaités :</strong> <% @group.services&.each do |service| %>
+          <%= service %>,
           <% end %>
-          </tbody>
-        </table>
-      </div>
-      <div class="group-block">
-        <div class="btn btn-info">
-          <%= link_to "Paramétrer le groupe", root_path %>
-        </div>
-        <br>
-        <div class="btn btn-info">
-          <%= link_to "Partager le lien du groupe", root_path %>
-        </div>
-        <br>
-        <div class="btn btn-info">
-          <%= link_to "Valider une demande d'intérêt", root_path %>
-        </div>
-        <br>
-        <div class="btn btn-info">
-          <%= link_to "Demander l'avis à l'un de nos experts", root_path %>
-        </div>
+        </p>
+        <p><strong>Profil du vigneron :</strong> <%= @group.winemaker_profile %></p>
       </div>
     </div>
-    <div class="w-50">
-      <div class="group-block">
-        <h2 class='class=-title'>Investissements disponibles selon votre projet</h2>
-        <div class="cards-top">
-          <%= render 'cards_top', investments: @investments %>
-        </div>
+    <hr>
+    <div class="group-block">
+      <h4 class="group-title">Top 5 des investissements disponibles par rapport à votre projet d'investissement</h4>
+      <div class="cards-top">
+        <%= render 'cards_top', investments: @investments %>
+      </div>
+    </div>
+    <hr>
+    <div class="group-block d-flex justify-content-around">
+      <div class="btn btn-info">
+        <%= link_to "Paramétrer le groupe", group_path(@group) %>
+      </div>
+      <div class="btn btn-info">
+        <%= link_to "Demander l'avis à l'un de nos experts", group_path(@group) %>
       </div>
     </div>
   </div>
-</div>
-
-<div class="container">
-  <hr>
-  <%= link_to "Rejoindre ce groupe", join_request_group_users_groups_path(@group), class: 'btn btn-primary', method: :post %>
-  <hr>
-
-  <h4>Inviter des personnes à rejoindre le groupe</h4>
-
-  <div class="form-group d-flex align-items-center">
-
-  <% available_users = User.all.to_a %>
-  <% available_users.reject! {|u| u.id == @group.user_id } %>
-  <% available_users.reject! {|u| u.in? @group.users } %>
-
-  <hr>
-
-  <%= form_tag(invite_group_users_groups_path(@group), style: 'width: 100%;') do %>
-    <%= select_tag "user_ids", options_from_collection_for_select(available_users, "id", "email"), multiple: true, class: 'form-control select2', style: "width: 100%;" %>
-    <%= submit_tag "inviter", class: "btn-invest-first btn-invest-test" %>
-  <% end %>
-  </div>
-
-  <hr>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
-
-<script>
-  document.querySelectorAll('svg[data-size]').forEach((svg) => {
-    const size = parseFloat(svg.dataset.size);
-    const tl = new TimelineMax();
-    const rects = svg.querySelectorAll('rect');
-    tl.to(rects, 0.4, { scaleY: size, transformOrigin: '50% 100%' });
-  })
-</script>
-
 </body>
 
