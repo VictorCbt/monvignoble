@@ -26,5 +26,4 @@ initSweetalert('#sweet-alert-demo', {
 });
 
 initSelect2();
-initSelect3();
 initGlasses();
