@@ -26,7 +26,7 @@ class Investment < ApplicationRecord
     (((group.users.count + 1) * ticket_amount.to_f) / investment_total) * 100
   end
 
-  def reminain_
+  # def reminain_
 
 end
 
