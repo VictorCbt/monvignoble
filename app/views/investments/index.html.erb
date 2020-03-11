@@ -4,7 +4,7 @@
    <div id=filter>
     <%= simple_form_for @group, url: investments_path, method: :get, remote: true do |f| %>
       <br>
-      <% regions = ["Bordeaux", "Bourgogne", "Vallée du Rhône", "Alsace", "Beaujolais", "Alsace", "Champagne", "Corse", "Jura", "Languedoc-Roussillon", "Provence", "Savoie", "Sud-Ouest", "Vallée de la Loire", "Vallée du Rhône"] %>
+      <% regions = ["Bordeaux", "Bourgogne", "Alsace", "Beaujolais", "Alsace", "Champagne", "Corse", "Jura", "Languedoc-Roussillon", "Provence", "Savoie", "Sud-Ouest", "Vallée de la Loire", "Vallée du Rhône"] %>
       <%= f.input :region, as: :select, label: 'Région viticole :', collection: regions %>
       <%= f.input :ticket_amount, label: "Montant du ticket d'entrée :" %>
       <%= f.input :investment_total, label: "Montant de l'investissement total :" %>
@@ -22,13 +22,3 @@
   </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
-
-<script>
-  document.querySelectorAll('svg[data-size]').forEach((svg) => {
-    const size = parseFloat(svg.dataset.size);
-    const tl = new TimelineMax();
-    const rects = svg.querySelectorAll('rect');
-    tl.to(rects, 0.4, { scaleY: size, transformOrigin: '50% 100%' });
-  })
-</script>

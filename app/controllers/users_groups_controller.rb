@@ -33,6 +33,16 @@ class UsersGroupsController < ApplicationController
     @users_group.save!
   end
 
+  def invite
+    @group = Group.find(params[:group_id])
+
+    params[:user_ids].each do |user_id|
+      UsersGroup.create(group: @group, user_id: user_id, status: 'waiting')
+    end
+
+    redirect_to group_path(@group)
+  end
+
   def confirm
     @users_group = UsersGroup.find(params[:id])
     @users_group.confirm!

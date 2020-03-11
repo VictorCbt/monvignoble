@@ -6,7 +6,7 @@
 
 <div class="col-md-12 text-center">
   <h1> <strong> <%= @investment.investment_name %> </strong></h1>
-  <p><%= @investment.punchline %></p>
+  <h5 class="pb-3 pt-2"><%= @investment.punchline %></h5>
   <span class="BPDUh"></span>
   <br>
 </div>
@@ -20,7 +20,7 @@
         <div class="day-left">
         </div>
       </div>
-      <div class="card card-product text-center p-3">
+      <div class="card card-product text-center p-3 card-red">
         <div class="card-description product">
           <div class="icon text-center pb-3 pt-3">
             <%= image_tag(@investment.user.avatar, class: "avatar-large-invest w-2", alt: "avatar-large")  %>
@@ -65,34 +65,38 @@
       <div class="left-element">
         <div class="align-items-center">
           <h2> <strong><%= @investment.domaine_name %></strong> </h2>
-          <div id="prod"class="key groupe-progress ">
+          <div id="prod"class="key groupe-progress">
             <div> <p><%= @investment.description  %> </p> </div>
               <hr>
 
+          <div class="d-flex">
             <div>
-              <div class="remuneration d-flex align-items-center">
-                <p class="ml-3"><%= image_tag("wine.png", class: "image-wine") %><%= image_tag("wine.png", class: "image-wine") %><%= image_tag("wine.png", class: "image-wine") %></p>
-                <p class="ml-4"> <h5> <%= @investment.remuneration %></p></h5>
-                <p class="ml-5">
-                  <%  if @investment.bio == true %>
+              <p class="ml-3"><%= image_tag("wine.png", class: "image-wine") %><%= image_tag("wine.png", class: "image-wine") %><%= image_tag("wine.png", class: "image-wine") %></p>
+              <p class="ml-3"><%= image_tag("plant.png", class: "image-money") %></p>
+              <p class="ml-3"> <%= image_tag("money2.png", class: "image-money") %></p>
+            </div>
+
+            <div >
+              <p class="ml-4 pb-2 pt-2"> <small><strong>Bouteilles/an: </strong></small> </p>
+              <p class="mr-3 ml-4 pb-3 pt-3"> <small><strong>Rendement: </strong></small></p>
+              <p class="mr-3 ml-4 pb-3 pt-3"> <small><strong>Vigneron: </strong></small></p>
+
+            </div>
+
+            <div class="pr-2">
+              <p class='pb-2 pt-2'> <%= @investment.remuneration %></p>
+              <p class='pb-3 pt-3'><%= @investment.profitability  %> %</p>
+              <p class='pb-3 pt-3'><%= @investment.winemaker_profile %></p>
+            </div>
+              <p><% if @investment.bio == true %>
                     <%= image_tag "https://nibuniconnu.fr/wp-content/uploads/2018/08/mise-avant.png", class:"wine-bio" %>
                   <% else  %>
                     <%= ""%>
-                  <% end  %>
-                </p>
-              </div>
+                  <% end  %></p>
+            <div>
+            </div>
+          </div>
 
-              <div class="remuneration d-flex align-items-center">
-                <p class="ml-3"><%= image_tag("plant.png", class: "image-money") %></p>
-                <p class="mr-3 ml-4"> <h5> <%= @investment.profitability  %> %</h5></p>
-              </div>
-
-               <div class="remuneration d-flex align-items-center">
-                <p class="ml-3"> <%= image_tag("money2.png", class: "image-money") %></p>
-                <p class="mr-3 ml-4"> <h5><%= @investment.winemaker_profile %></h5></p>
-              </div>
-
-              </div>
 
           </div>
         </div>
@@ -100,10 +104,10 @@
 
         <h3 class="mb-2"><strong>Groupes intérresés</strong></h3>
 
-        <div class="exp-desc groupe-progress">
+        <div class="exp-desc groupe-progress ">
 
           <% @investment.groups.each do |group|  %>
-          <div class="d-flex align-items-center">
+          <div class="d-flex align-items-center ">
 
             <div class="price pr-3 w-100 ">
 
@@ -137,8 +141,9 @@
             </div>
 
             <p class="request-button pl-3">
-              <%= link_to "Rejoindre", join_request_group_users_groups_path(group), method: :post, class: 'btn btn-investment w-100', remote: true %>
-            </p>
+              <%= link_to "Rejoindre", join_request_group_users_groups_path(group), method: :post, class: 'btn-invest-first btn-invest-test ', remote: true %>
+
+              </p>
 
           </div>
           <hr>
@@ -157,12 +162,12 @@
       </div>
 
       <% @investment.offered_services.each do |offer| %>
-      <div class="card card-product text-center">
+      <div class="card card-product text-center card-red">
         <div class="card-description product">
-          <div class="icon text-center pt-2"> <%= image_tag("Tickets.png", class: "image-ticket") %></div>
-          <span><strong> <%= offer.title %></strong> </span>
+          <div class="icon text-center pt-2"> <%= image_tag("ticket.png", class: "image-ticket") %></div>
+          <span style="color:#a23e48"><strong> <%= offer.title %></strong> </span>
           <hr class="product">
-          <p class="ticket-number p-2"><%= offer.description %></p>
+          <p class="ticket-number p-2" style="color:#a23e48"><%= offer.description %></p>
         </div>
       </div>
       <br>
