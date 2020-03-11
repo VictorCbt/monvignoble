@@ -6,7 +6,7 @@
       </div>
       <div class="card-result-text">
         <div class="card-result-infos">
-          <h2><%= investment.domaine_name %> (<%= investment.match %> %)</h2>
+          <h2><%= investment.domaine_name %></h2>
           <p><%= investment.region %> - <%= investment.designation %></p>
           <hr>
           <h2>Chouchouté par <%= investment.user.first_name %> <%= investment.user.last_name %></h2>
@@ -19,8 +19,6 @@
           </div>
         </div>
         <div>
-          <p>(<%= investment.match %>)</p>
-
           <svg viewBox="0 0 161 301" style="height: 100px" data-size="<%= investment.match / 100.0 %>">
             <clipPath id="wine-clippath">
             <path d="M80.125,138.75c-5.973,0 -12.822,-1.152 -19.834,-3.387l-0.166,-0.053c-6.667,-2.123 -13.482,-5.221 -19.849,-9.235l-0.151,-0.095c-16.52,-10.43 -30,-26.96 -30,-48.48c0,-12.61 7.5,-38.75 16.47,-56.25l106.64,0c9.01,17.75 16.89,43.64 16.89,56.25c0,38.585 -44.017,61.162 -69.848,61.25l-0.152,0Z" fill="#000"></path>
@@ -39,3 +37,14 @@
     </div>
   <% end %>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
+
+<script>
+  document.querySelectorAll('svg[data-size]').forEach((svg) => {
+    const size = parseFloat(svg.dataset.size);
+    const tl = new TimelineMax();
+    const rects = svg.querySelectorAll('rect');
+    tl.to(rects, 0.4, { scaleY: size, transformOrigin: '50% 100%' });
+  })
+</script>

@@ -1,5 +1,5 @@
 <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/442116/pexels-photo-442116.jpeg?cs=srgb&dl=clouds-countryside-cropland-crops-442116.jpg&fm=jpg)">
-  <%= @group.name %> (<%= @group.region %>)
+  <%= @group.name %>
 </div>
 
 <div class="container">
@@ -7,7 +7,7 @@
     <div class="w-50">
       <div class="group-block">
         <div class="group-title">
-          <h2 class='title'>Votre projet d'investissement</h2>
+          <h2 class='class=-title'>Votre projet d'investissement</h2>
           <div class="card-offre-button">
             <div class="btn btn-primary">
               <%= link_to "Mettre à jour", edit_group_path(@group) %>
@@ -20,14 +20,17 @@
           <p>Montant du ticket d'entrée : <%= @group.ticket_amount %></p>
           <p>Parts disponibles : <%= @group.share_available %></p>
           <p>Montant total de l'investissement : <%= @group.investment_total %></p>
-          <p>Services proposés par le vigneron : <%= @group.services %></p>
+          <p>Services proposés par le vigneron : <% @group.services.each do |service| %>
+            <%= service %>,
+            <% end %>
+          </p>
           <p>Profil du vigneron : <%= @group.winemaker_profile %></p>
           <p>Accepte les rétributions différées : <%= @group.deferred_remuneration %></p>
         </div>
       </div>
       <div class="group-block">
         <table class="table table-bordered">
-          <h3>Investisseurs membres du groupe</h3>
+          <h2 class='class=-title'>Investisseurs membres du groupe</h2>
           <thead>
             <tr>
               <th scope="col">Nom</th>
@@ -82,65 +85,9 @@
     </div>
     <div class="w-50">
       <div class="group-block">
-        <h2 class='group-title'>Top 10 des investissements disponibles par rapport à votre projet d'investissement</h2>
+        <h2 class='class=-title'>Investissements disponibles selon votre projet</h2>
         <div class="cards-top">
-           <% @investments.each do |investment| %>
-            <div class="card-top">
-              <div>
-                <%= cl_image_tag investment.photo.key, height: 100, width: 150, crop: :fill if investment.photo.attached? %>
-              </div>
-              <div class="card-top-infos">
-                <div class="card-top-text">
-                  <h2><%= investment.investment_name %></h2>
-                  <p><%= investment.region %></p>
-                  <p><%= investment.designation %></p>
-                </div>
-              </div>
-              <div class="card-top-pricing">
-                <h2>Ticket : <%= investment.ticket_amount %> €</h2>
-                <h2>Inv total : <%= investment.investment_total %> €</h2>
-              </div>
-              <div>
-                <svg viewBox="0 0 161 301" style="height: 100px" data-size="<%= investment.match / 100.0 %>">
-                  <clipPath id="wine-clippath">
-                  <path d="M80.125,138.75c-5.973,0 -12.822,-1.152 -19.834,-3.387l-0.166,-0.053c-6.667,-2.123 -13.482,-5.221 -19.849,-9.235l-0.151,-0.095c-16.52,-10.43 -30,-26.96 -30,-48.48c0,-12.61 7.5,-38.75 16.47,-56.25l106.64,0c9.01,17.75 16.89,43.64 16.89,56.25c0,38.585 -44.017,61.162 -69.848,61.25l-0.152,0Z" fill="#000"></path>
-                  </clipPath>
-                  <image xlink:href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/395186/wine.svg" x="0" y="0" width="100%" height="100%"></image>
-                  <g class="glass-fill" clip-path="url(#wine-clippath)">
-                    <rect x="10" y="20" width="31" height="120" style="fill: #874640;"></rect>
-                    <rect x="40" y="20" width="21" height="120" style="fill: #AA6F65;"></rect>
-                    <rect x="60" y="20" width="21" height="120" style="fill: #874640;"></rect>
-                    <rect x="80" y="20" width="70" height="120" style="fill: #751D19;"></rect>
-                  </g>
-                </svg>
-                <h2><%= investment.match %> %</h2>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      </div>
-      <div class="group-block">
-        <h2 class='group-title'>Votre liste de souhaits</h2>
-        <div class="cards-top">
-           <% @investments.each do |investment| %>
-            <div class="card-top">
-              <div>
-                <%= cl_image_tag investment.photo.key, height: 100, width: 150, crop: :fill if investment.photo.attached? %>
-              </div>
-              <div class="card-top-infos">
-                <div class="card-top-text">
-                  <h2><%= investment.investment_name %></h2>
-                  <p><%= investment.region %></p>
-                  <p><%= investment.designation %></p>
-                </div>
-              </div>
-              <div class="card-top-pricing">
-                <h2><%= investment.match %> %</h2>
-                <h2>Ticket : <%= investment.ticket_amount %> €</h2>
-                <h2>Inv total : <%= investment.investment_total %> €</h2>
-              </div>
-            </div>
-          <% end %>
+          <%= render 'cards_top', investments: @investments %>
         </div>
       </div>
     </div>
@@ -158,9 +105,10 @@
 
 <script>
   document.querySelectorAll('svg[data-size]').forEach((svg) => {
-    const size = svg.dataset.size;
+    const size = parseFloat(svg.dataset.size);
     const tl = new TimelineMax();
     const rects = svg.querySelectorAll('rect');
     tl.to(rects, 0.4, { scaleY: size, transformOrigin: '50% 100%' });
   })
 </script>
+
