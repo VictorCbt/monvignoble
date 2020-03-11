@@ -10,7 +10,6 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 import initSelect2 from '../plugins/init_select2.js'
-import initSelect3 from '../plugins/init_select2.js'
 import initGlasses from '../plugins/init_glasses.js'
 
 loadDynamicBannerText();

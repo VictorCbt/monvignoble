@@ -1,4 +1,4 @@
-const formElement = document.querySelector('#new_group')
+const formElement = document.querySelector('.container-investment #new_group')
 
 const inputChangeEvent = (_e) => {
   Rails.fire(formElement, 'submit');
