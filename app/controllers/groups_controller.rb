@@ -40,6 +40,10 @@ class GroupsController < ApplicationController
     redirect_to groups_path
   end
 
+  def set_favori
+    puts "hello"
+  end
+
 
   private
 
