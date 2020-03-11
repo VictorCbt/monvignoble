@@ -110,7 +110,7 @@
   <% available_users.reject! {|u| u.in? @group.users } %>
 
   <hr>
-    
+
   <%= form_tag(invite_group_users_groups_path(@group), style: 'width: 100%;') do %>
     <%= select_tag "user_ids", options_from_collection_for_select(available_users, "id", "email"), multiple: true, class: 'form-control select2', style: "width: 100%;" %>
     <%= submit_tag "inviter", class: "btn-invest-first btn-invest-test" %>

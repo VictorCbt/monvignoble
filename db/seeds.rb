@@ -1,7 +1,7 @@
 OfferedService.destroy_all
 UsersGroup.destroy_all
-Investment.destroy_all
 Group.destroy_all
+Investment.destroy_all
 User.destroy_all
 
 puts "delete user"
