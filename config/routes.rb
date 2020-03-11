@@ -10,8 +10,9 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :groups, only: [:show, :new, :create, :edit, :update, :destroy] do
-    get "set_favori", on: :member
-    
+    member do
+      post "set_favori/:investment_id", to: 'groups#set_favori', as: :set_favori
+    end
     resources :users_groups, only: [:index, :show] do
       collection do
         post :join_request

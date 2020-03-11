@@ -9,14 +9,13 @@ import '../plugins/init_sweetalert';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-import { addInvestmentInFavori } from '../components/investment_selected';
 import initSelect2 from '../plugins/init_select2.js'
 import initSelect3 from '../plugins/init_select2.js'
+import initGlasses from '../plugins/init_glasses.js'
 
 loadDynamicBannerText();
 AOS.init();
 initSearch();
-addInvestmentInFavori();
 
 import { initSweetalert } from '../plugins/init_sweetalert';
 
@@ -28,3 +27,4 @@ initSweetalert('#sweet-alert-demo', {
 
 initSelect2();
 initSelect3();
+initGlasses();

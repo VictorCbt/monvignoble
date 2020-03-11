@@ -1,0 +1,4 @@
+var cardsTopElement = document.querySelector('.cards-top')
+var html = "<%= j render 'cards_top', investments: @investments %>"
+
+cardsTopElement.innerHTML = html

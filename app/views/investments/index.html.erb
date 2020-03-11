@@ -1,25 +1,24 @@
-<h1 class='title-page'>Résultat de la recherche</h1>
-<div class="results-container">
+<div class="container-investment">
 
-   <div id=filter>
-    <%= simple_form_for @group, url: investments_path, method: :get, remote: true do |f| %>
-      <br>
-      <% regions = ["Bordeaux", "Bourgogne", "Alsace", "Beaujolais", "Alsace", "Champagne", "Corse", "Jura", "Languedoc-Roussillon", "Provence", "Savoie", "Sud-Ouest", "Vallée de la Loire", "Vallée du Rhône"] %>
-      <%= f.input :region, as: :select, label: 'Région viticole :', collection: regions %>
-      <%= f.input :ticket_amount, label: "Montant du ticket d'entrée :" %>
-      <%= f.input :investment_total, label: "Montant de l'investissement total :" %>
-      <%= f.input :share_available, label: "Nombre de parts disponibles :" %>
-      <%= f.input :services, as: :select, label: 'Services proposés par le vigneron :', collection: ["Découverte des vendanges", "Etiquette de bouteille personnalisée", "Invitation à la dégustation annuelle", "Visite du domaine", "Initiation au processus de vinification"] %>
-      <%= f.input :winemaker_profile, as: :select, label: 'Profil du vigneron :', collection: ["Jeune vigneron", "Vigneron installé"] %>
-      <%= f.input :deferred_remuneration, as: :boolean, label: "Accepte les rétributions différées" %>
-      <hr>
-      <%= f.button :submit, "Valider", class: 'btn btn-primary' %>
-    <% end %>
-   </div>
-
-  <div class="cards-result">
-    <%= render 'cards_results', investments: @investments %>
+  <div class="card-category-investment" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1565996596244-feb9a44f023a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1055&q=80)">
+    Resultat de la recherche
   </div>
+             <div id=filter>
+            <%= simple_form_for @group, url: investments_path, method: :get, remote: true, html: {class: 'form-inline'} do |f| %>
+              <br>
+              <% regions = ["Bordeaux", "Bourgogne", "Alsace", "Beaujolais", "Alsace", "Champagne", "Corse", "Jura", "Languedoc-Roussillon", "Provence", "Savoie", "Sud-Ouest", "Vallée de la Loire", "Vallée du Rhône"] %>
+              <%= f.input :region, as: :select, label: 'Région viticole', collection: regions %>
+              <%= f.input :ticket_amount, label: "Montant du ticket d'entrée" %>
+              <%= f.input :winemaker_profile, as: :select, label: 'Profil du vigneron', collection: ["Jeune vigneron", "Vigneron installé"] %>
+              <hr>
+              <%= f.button :submit, "Valider", class: 'btn btn-secondary' %>
+            <% end %>
+           </div>
+
+          <div class="results-container">
+                <%= render 'cards_results', investments: @investments %>
+          </div>
+
 </div>
 
 
