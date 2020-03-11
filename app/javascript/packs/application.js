@@ -12,7 +12,6 @@ import 'aos/dist/aos.css';
 import { addInvestmentInFavori } from '../components/investment_selected';
 import initSelect2 from '../plugins/init_select2.js'
 
-
 loadDynamicBannerText();
 AOS.init();
 initSearch();
