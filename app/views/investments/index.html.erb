@@ -9,7 +9,7 @@
       <%= f.input :ticket_amount, label: "Montant du ticket d'entrée :" %>
       <%= f.input :investment_total, label: "Montant de l'investissement total :" %>
       <%= f.input :share_available, label: "Nombre de parts disponibles :" %>
-      <%= f.input :services, as: :select, label: 'Services proposés par le vigneron :', collection: ["Découverte des vendanges", "Etiquette de bouteille personnalisée"] %>
+      <%= f.input :services, as: :select, label: 'Services proposés par le vigneron :', collection: ["Découverte des vendanges", "Etiquette de bouteille personnalisée", "Invitation à la dégustation annuelle", "Visite du domaine", "Initiation au processus de vinification"] %>
       <%= f.input :winemaker_profile, as: :select, label: 'Profil du vigneron :', collection: ["Jeune vigneron", "Vigneron installé"] %>
       <%= f.input :deferred_remuneration, as: :boolean, label: "Accepte les rétributions différées" %>
       <hr>
@@ -21,4 +21,5 @@
     <%= render 'cards_results', investments: @investments %>
   </div>
 </div>
+
 
