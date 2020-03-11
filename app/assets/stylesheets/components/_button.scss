@@ -12,8 +12,8 @@
   padding: 0;
 }
 $openSans: 'Open Sans', Helvetica, Arial, sans-serif;
+
 body {
-  background: #A43D46;
   font-family: $openSans;
 }
 
@@ -56,7 +56,7 @@ $borderW: 2px;
     top: 0;
     width: 100%;
     height: 100%;
-    border: $borderW solid #A43D46;
+    border: $borderW solid transparent;
     border-radius:30px;
   }
 

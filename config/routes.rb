@@ -11,15 +11,13 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :groups, only: [:show, :new, :create, :edit, :update, :destroy] do
     get "set_favori", on: :member
-    resources :users_groups, only: [] do
+    
+    resources :users_groups, only: [:index, :show] do
       collection do
         post :join_request
+        post :invite
       end
     end
-  end
-
-  resources :groups, only: [:show, :new, :create, :edit, :update, :destroy] do
-    resources :users_groups, only: [:index, :show]
   end
 
   resources :users_groups, only: [] do
@@ -27,5 +25,6 @@ Rails.application.routes.draw do
       patch :confirm
     end
   end
+
 end
 
