@@ -1,7 +1,7 @@
 OfferedService.destroy_all
 UsersGroup.destroy_all
-Investment.destroy_all
 Group.destroy_all
+Investment.destroy_all
 User.destroy_all
 
 puts "delete user"
@@ -37,14 +37,10 @@ investment12 = Investment.create!(investment_name: "Achat d'une parcelle en Cham
 
 puts "creation #{Investment.count} investments"
 
-group1 = Group.create!(name: "Groupe des teachers", status: "publique", region: "Vallée du Rhône", designation: "Côte-Rotie", winemaker_profile: "Jeune vigneron", votes: 5, profitability: 3, share_available: 3, investment_total: 3000, ticket_amount: 1000, deferred_remuneration: false, user_id: user1.id, investment: nil)
-group2 = Group.create!(name: "Groupe des alumnis", status: "publique", region: "Bourgogne", designation: "Puligny-Montrachet", winemaker_profile: "Vigneron installé", votes: 4, profitability: 2, share_available: 10, investment_total: 15000, ticket_amount: 5000, deferred_remuneration: true, user_id: user3.id, investment: investment2)
-group3 = Group.create!(name: "groupe3", status: "publique", region: "Bourgogne", designation: "Puligny-Montrachet", winemaker_profile: "Vigneron installé", votes: 4, profitability: 2, share_available: 10, investment_total: 15000, ticket_amount: 5000, deferred_remuneration: true, user_id: user3.id, investment: investment3)
-group4 = Group.create!(name: "group4", status: "publique", region: "Bourgogne", designation: "Puligny-Montrachet", winemaker_profile: "Vigneron installé", votes: 4, profitability: 2, share_available: 10, investment_total: 15000, ticket_amount: 5000, deferred_remuneration: true, user_id: user3.id, investment: investment3)
-
-
-#services: ["Découverte des vendanges", "Etiquette de bouteille personnalisée", "Initiation au processus de vinification"]
-#services: ["Invitation à la dégustation annuelle", "Visite du domaine"]
+group1 = Group.create!(name: "Groupe des teachers", status: "publique", region: "Vallée du Rhône", designation: "Côte-Rotie", services: ["Découverte des vendanges", "Etiquette de bouteille personnalisée", "Initiation au processus de vinification"], winemaker_profile: "Jeune vigneron", votes: 5, profitability: 3, share_available: 3, investment_total: 3000, ticket_amount: 1000, deferred_remuneration: false, user_id: user1.id, investment: nil)
+group2 = Group.create!(name: "Groupe des alumnis", status: "publique", region: "Bourgogne", designation: "Puligny-Montrachet", services: ["Invitation à la dégustation annuelle", "Visite du domaine"], winemaker_profile: "Vigneron installé", votes: 4, profitability: 2, share_available: 10, investment_total: 15000, ticket_amount: 5000, deferred_remuneration: true, user_id: user3.id, investment: investment2)
+group3 = Group.create!(name: "groupe3", status: "publique", region: "Bourgogne", designation: "Puligny-Montrachet", services: ["Invitation à la dégustation annuelle", "Visite du domaine"], winemaker_profile: "Vigneron installé", votes: 4, profitability: 2, share_available: 10, investment_total: 15000, ticket_amount: 5000, deferred_remuneration: true, user_id: user3.id, investment: investment3)
+group4 = Group.create!(name: "group4", status: "publique", region: "Bourgogne", designation: "Puligny-Montrachet", services: ["Invitation à la dégustation annuelle", "Visite du domaine"], winemaker_profile: "Vigneron installé", votes: 4, profitability: 2, share_available: 10, investment_total: 15000, ticket_amount: 5000, deferred_remuneration: true, user_id: user3.id, investment: investment3)
 
 puts "creation #{Group.count} groups"
 
