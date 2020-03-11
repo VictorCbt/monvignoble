@@ -11,6 +11,7 @@ import 'aos/dist/aos.css';
 
 import { addInvestmentInFavori } from '../components/investment_selected';
 import initSelect2 from '../plugins/init_select2.js'
+import initSelect3 from '../plugins/init_select2.js'
 
 loadDynamicBannerText();
 AOS.init();
@@ -25,4 +26,5 @@ initSweetalert('#sweet-alert-demo', {
   icon: "success"
 });
 
-initSelect2()
+initSelect2();
+initSelect3();

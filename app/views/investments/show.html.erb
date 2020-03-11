@@ -84,11 +84,11 @@
             </div>
 
             <div class="pr-2">
-              <p class='pb-2 pt-2'> <%= @investment.remuneration %></p>
-              <p class='pb-3 pt-3'><%= @investment.profitability  %> %</p>
-              <p class='pb-3 pt-3'><%= @investment.winemaker_profile %></p>
+              <p class='pb-2 pt-2 pl-4'> <%= @investment.remuneration %></p>
+              <p class='pb-3 pt-3 pl-4'><%= @investment.profitability  %> %</p>
+              <p class='pb-3 pt-3 pl-4'><%= @investment.winemaker_profile %></p>
             </div>
-              <p><% if @investment.bio == true %>
+              <p class="pl-4"><% if @investment.bio == true %>
                     <%= image_tag "https://nibuniconnu.fr/wp-content/uploads/2018/08/mise-avant.png", class:"wine-bio" %>
                   <% else  %>
                     <%= ""%>
@@ -112,7 +112,7 @@
             <div class="price pr-3 w-100 ">
 
                   <% i_total = @investment.investment_total %>
-                  <% i_collect = i_total - group.investment_total %>
+                  <% i_collect =  group.ticket_amount + (group.ticket_amount * group.users.count) %>
                   <% ticket = @investment.ticket_amount %>
 
               <div class="d-flex" >
@@ -128,10 +128,10 @@
             <div class="w-100 text-center " >
               <div>
                 <div class="d-flex">
-                  <h5 class="pr-3" style="color:#86B04A"><strong><%= number_to_currency(i_total - group.investment_total, precision: 0, :unit => " €  ") %></strong></h5>
+                  <h5 class="pr-3" style="color:#86B04A"><strong><%= number_to_currency((group.users.count + 1) * @investment.ticket_amount, precision: 0, :unit => " €  ") %></strong></h5>
                   <p><small class="">collectés</small></p>
                 </div>
-                <div class="progress-bar bg-info" role="progressbar" style="width: <%=(i_collect*100/i_total)%>%" aria-valuenow="<%=(i_collect*100/i_total)%>" aria-valuemin="0" aria-valuemax="100"><%=(i_collect*100/i_total)%>%
+                <div class="progress-bar bg-info" role="progressbar" style="width: <%= @investment.completion_percentage_for(group) %>%" aria-valuenow="<%=@investment.completion_percentage_for(group)%>" aria-valuemin="0" aria-valuemax="100"><%=@investment.completion_percentage_for(group).round%>%
                 </div>
               </div>
             </div>
