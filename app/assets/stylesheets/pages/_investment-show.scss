@@ -184,12 +184,43 @@
     transform: translateX(-50%) translateY(-50%);
   }
 
-#filter {
+.custom-select {
   width: 350px;
   margin-left: 10px;
 }
 
 
 .glasses {
-  margin-left: 150px;
+  margin-top: 45px;
+  margin-right: 140px;
 }
+
+
+.card-category-investment {
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+#new_group {
+  height: 100px;
+  justify-content: space-between;
+  padding-right: 60px;
+  color: #A53D48;
+}
+
+label {
+  padding-right: 20px;
+}
+
+
+
+
