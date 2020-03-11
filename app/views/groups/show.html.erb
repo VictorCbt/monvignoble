@@ -1,3 +1,6 @@
+<body class="body-investment">
+
+
 <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/442116/pexels-photo-442116.jpeg?cs=srgb&dl=clouds-countryside-cropland-crops-442116.jpg&fm=jpg)">
   <%= @group.name %> (<%= @group.region %>)
 </div>
@@ -112,7 +115,21 @@
   <%= link_to "Rejoindre ce groupe", join_request_group_users_groups_path(@group), class: 'btn btn-primary', method: :post %>
   <hr>
 
+  <h4>Inviter des personnes à rejoindre le groupe</h4>
 
+  <div class="form-group d-flex align-items-center">
+
+  <% available_users = User.all.to_a %>
+  <% available_users.reject! {|u| u.id == @group.user_id } %>
+  <% available_users.reject! {|u| u.in? @group.users } %>
+
+  <%= form_tag(invite_group_users_groups_path(@group), style: 'width: 100%;') do %>
+    <%= select_tag "user_ids", options_from_collection_for_select(available_users, "id", "email"), multiple: true, class: 'form-control select2', style: "width: 100%;" %>
+    <%= submit_tag "inviter", class: "btn-invest-first btn-invest-test" %>
+  <% end %>
+  </div>
+
+  <hr>
    <table class="table table-bordered">
     <h3>Membres de mon groupe / Investisseurs</h3>
     <thead>
@@ -129,7 +146,7 @@
   <% @group.users_groups.each do |groupuser|  %>
       <tbody>
         <tr>
-          <td><small class="text-muted">Avatar:</small> <%= groupuser.user.avatar  %> </td>
+          <td><small class="text-muted">Avatar:</small> <%= image_tag(groupuser.user.avatar, class:"avatar-large-invest")  %> </td>
           <td><small class="text-muted">Par:</small> <%= groupuser.user.first_name  %> <strong><%= groupuser.user.last_name  %></strong>  </td>
           <td><small class="text-muted">Coordonnées:</small>  <%= groupuser.user.email %> </td>
           <td><small class="text-muted">Apport:</small>   <%= @group.ticket_amount  %> €</td>
@@ -159,3 +176,5 @@
     tl.to(rects, 0.4, { scaleY: size, transformOrigin: '50% 100%' });
   })
 </script>
+
+</body>
