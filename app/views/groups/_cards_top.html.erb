@@ -26,7 +26,7 @@
       <div class= "card-top-infos">
         <div class="card-top-text d-flex align-content-around flex-wrap">
             <h3>Ticket d'entrée :</h3><h3 class= "green-top"><%= investment.ticket_amount %> €</h3>
-            <h3>Nombre de parts :</h3><h3 class= "green-top"><%= investment.total_share %> €</h3>
+            <h3>Nombre de parts :</h3><h3 class= "green-top"><%= investment.total_share %></h3>
             <h3>Montant invest :</h3><h3 class= "green-top"><%= investment.investment_total %> €</h3>
         </div>
           <div class="card-top-glass">
@@ -46,13 +46,8 @@
           </div>
         </div>
         <div class="card-top-buttons">
-          <div class="btn-top-green">
-            <%= link_to "Plus d'info", investment_path(investment) %>
-          </div>
-          <br>
-          <div class="btn-top-red">
-            <%= link_to "Investir", set_favori_group_path(@group, investment), method: :post, remote: true %>
-          </div>
+          <%= link_to "Plus d'info", investment_path(investment), class: 'btn-top-green' %>
+          <%= link_to "Investir", set_favori_group_path(@group, investment), method: :post, remote: true, class: 'btn-top-red' %>
         </div>
       </div>
     </div>

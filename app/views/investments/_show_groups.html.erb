@@ -35,7 +35,7 @@
        <p style="color:#a23e48"><small><i>Vous êtes admin</i></small></p>
     <% elsif users_group.nil? %>
       <p class="request-button pl-3">
-        <%= link_to "Rejoindre", join_request_group_users_groups_path(group), method: :post, class: 'btn-invest-first btn-invest-test ', remote: true %>
+        <%= link_to "Rejoindre", join_request_group_users_groups_path(group), method: :post, class: 'btn-invest-first btn-invest-test', remote: true %>
       </p>
     <% elsif users_group.status == "waiting" %>
       <p style="color:#a23e48"><small><i>Vous avez déjà été invité sur ce groupe</i></small></p>
@@ -45,5 +45,10 @@
       <p style="color:#a23e48"><small><i>Vous êtes déjà membre</i></small></p>
     <% end %>
   </div>
-  <hr>
+  <% if group.ready? %>
+    <div class="container-button-green">
+      <%= link_to "Envoyer une demande d'investissement au vigneron", "#", class: 'btn btn-top-green'%>
+    </div>
+  <% end %>
+    <hr>
 <% end %>

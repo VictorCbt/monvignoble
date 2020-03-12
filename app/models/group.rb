@@ -27,7 +27,7 @@ class Group < ApplicationRecord
   end
 
   def ready?
-    members.size == group.investment.total_share
+    members.size == investment.total_share
   end
 
   private
