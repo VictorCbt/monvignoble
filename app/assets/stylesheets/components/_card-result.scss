@@ -31,6 +31,7 @@
 .cards-result {
   flex-grow: 1;
   width: 100vw;
+  padding: 22px;
 }
 
 .card-result {
@@ -38,6 +39,8 @@
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
+  justify-content: center;
+  align-content: center;
   border-radius: 5px;
   margin: 10px;
   padding: 20px;
@@ -62,22 +65,31 @@
   margin: 0;
 }
 
-.card-result-text {
-  display: flex;
-}
-
 .card-result .card-result-infos {
   padding: 12px;
-  width: 400px;
+  width: 200px;
 }
 
 .card-result .card-result-pricing {
-  padding: 16px;
+  padding: 11px;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 140px;
+  position: relative;
+  right: 20px;
 }
+
+.card-result .number_matching {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  left: 155px;
+  top: -203px;
+}
+
 
 .card-result:hover {
 -webkit-transform: scale(1.03);
@@ -137,4 +149,10 @@
   .cards-result {
     grid-template-columns: 1fr 1fr;
   }
+}
+
+.infos-flex {
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
