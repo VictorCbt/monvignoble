@@ -13,14 +13,18 @@
                     <h2>Chouchouté par <%= investment.user.first_name %> <%= investment.user.last_name %></h2>
                 </div>
 
+                              <div class="card-result-pricing">
+                                <div class="ticket.amount">
+                                  <h2><%= investment.ticket_amount %> €</h2>
+                                </div>
 
-                  <div class="card-result-pricing">
-                    <h2><%= investment.ticket_amount %> €</h2>
-                    <h2><%= investment.share_available %> parts disponibles</h2>
-                    <div class="btn btn-info">
-                      <%= link_to "Plus d'info", investment_path(investment) %>
-                    </div>
-                  </div>
+                                <div class="card-parts">
+                                  <h2><%= investment.share_available %> parts disponibles</h2>
+                                </div>
+                                <div class="btn btn-info">
+                                  <%= link_to "Plus d'info", investment_path(investment) %>
+                                </div>
+                              </div>
             </div>
 
 
