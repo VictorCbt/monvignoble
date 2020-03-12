@@ -105,50 +105,7 @@
         <h3 class="mb-2"><strong>Groupes intérresés</strong></h3>
 
         <div class="exp-desc groupe-progress ">
-
-          <% @investment.groups.each do |group|  %>
-          <div class="d-flex align-items-center ">
-
-            <div class="price pr-3 w-100 ">
-
-                  <% i_total = @investment.investment_total %>
-                  <% i_collect =  group.ticket_amount + (group.ticket_amount * group.users.count) %>
-                  <% ticket = @investment.ticket_amount %>
-
-              <div class="d-flex" >
-                <div class="align-self-center">
-                  <p><%= image_tag "https://dwj199mwkel52.cloudfront.net/assets/lewagon-logo-square-fe76916e1b923ade71e253ae6dc031d936e5e8eebac4e26b0fbac650ea6ee360.png", class: "avatar-bordered", alt: "avatar-bordered" %></p>
-                </div>
-                <div class="align-self-center ml-3">
-                  <p class=""> <%= group.name %> </p>
-                </div>
-              </div>
-            </div>
-
-            <div class="w-100 text-center " >
-              <div>
-                <div class="d-flex">
-                  <h5 class="pr-3" style="color:#86B04A"><strong><%= number_to_currency((group.users.count + 1) * @investment.ticket_amount, precision: 0, :unit => " €  ") %></strong></h5>
-                  <p><small class="">collectés</small></p>
-                </div>
-                <div class="progress-bar bg-info" role="progressbar" style="width: <%= @investment.completion_percentage_for(group) %>%" aria-valuenow="<%=@investment.completion_percentage_for(group)%>" aria-valuemin="0" aria-valuemax="100"><%=@investment.completion_percentage_for(group).round%>%
-                </div>
-              </div>
-            </div>
-
-            <div class="ticket pr-3 pl-3 text-center">
-              <p><strong> <h5 style="color:#86B04A"><%= (((i_total) - (i_collect)) / (ticket)) %></strong></h5><small>parts restantes</small> </p>
-            </div>
-
-            <p class="request-button pl-3">
-              <%= link_to "Rejoindre", join_request_group_users_groups_path(group), method: :post, class: 'btn-invest-first btn-invest-test ', remote: true %>
-
-              </p>
-
-          </div>
-          <hr>
-          <% end %>
-
+          <%= render 'show_groups', investment: @investment %>
         </div>
       </div>
     </div>

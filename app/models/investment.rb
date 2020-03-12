@@ -23,11 +23,8 @@ class Investment < ApplicationRecord
   attr_accessor :match
 
   def completion_percentage_for(group)
-    (((group.users.count + 1) * ticket_amount.to_f) / investment_total) * 100
+    100 * (group.members.size * ticket_amount.to_f) / investment_total
   end
-
-  # def reminain_
-
 end
 
 
