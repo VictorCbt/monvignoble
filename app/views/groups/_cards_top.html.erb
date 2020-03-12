@@ -1,7 +1,7 @@
 <% favori_set = @group.investment.present? %>
 
 <div id="group-id" data-group-id = <%= @group.id %>>
-  <% @investments[0..4].each do |investment| %>
+  <% @investments[0..5].each do |investment| %>
 
     <% if @group.investment.nil? %>
       <% color = "" %>
@@ -10,47 +10,50 @@
       <% color = "#E9D2D5" %>
       <% border = "solid" %>
       <% bordercolor = "#a43d46" %>
+
     <% else %>
       <% color = "" %>
       <% opacity = "0.5" %>
     <% end %>
 
     <div class="card-top" data-investment-id="<%= investment.id %>" style="background-color: <%= color %>;border: <%= border %>; opacity: <%= opacity %>; border-color: <%= bordercolor %>">
-      <div>
+      <div class="image">
         <%= cl_image_tag investment.photo.key, height: 200, width: 300, crop: :fill if investment.photo.attached? %>
+        <h2><%=investment.domaine_name %></h2>
+        <p><%= investment.region %> - <%= investment.designation %></p>
       </div>
-      <div class="card-top-infos">
-        <div class="card-top-text">
-          <h2><%= investment.domaine_name %></h2>
-          <p><%= investment.region %> - <%= investment.designation %></p>
-          <p>Ticket : <%= investment.ticket_amount %> €</p>
-          <p>Nombre de parts : <%= investment.total_share %></p>
-          <p>Inv total : <%= investment.investment_total %> €</p>
+      <div>
+      <div class= "card-top-infos">
+        <div class="card-top-text d-flex align-content-around flex-wrap">
+            <h3>Ticket d'entrée :</h3><h3 class= "green-top"><%= investment.ticket_amount %> €</h3>
+            <h3>Nombre de parts :</h3><h3 class= "green-top"><%= investment.total_share %> €</h3>
+            <h3>Montant invest :</h3><h3 class= "green-top"><%= investment.investment_total %> €</h3>
         </div>
-      </div>
-      <div class="card-top-pricing">
-        <div class="btn-invest-test btn-invest-first">
-          <%= link_to "Plus d'info", investment_path(investment) %>
+          <div class="card-top-glass">
+            <svg viewBox="0 0 161 301" style="height: 100px" data-size="<%= investment.match / 100.0 %>">
+              <clipPath id="wine-clippath">
+              <path d="M80.125,138.75c-5.973,0 -12.822,-1.152 -19.834,-3.387l-0.166,-0.053c-6.667,-2.123 -13.482,-5.221 -19.849,-9.235l-0.151,-0.095c-16.52,-10.43 -30,-26.96 -30,-48.48c0,-12.61 7.5,-38.75 16.47,-56.25l106.64,0c9.01,17.75 16.89,43.64 16.89,56.25c0,38.585 -44.017,61.162 -69.848,61.25l-0.152,0Z" fill="#000"></path>
+              </clipPath>
+              <image xlink:href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/395186/wine.svg" x="0" y="0" width="100%" height="100%"></image>
+              <g class="glass-fill" clip-path="url(#wine-clippath)">
+                <rect x="10" y="20" width="31" height="120" style="fill: #874640;"></rect>
+                <rect x="40" y="20" width="21" height="120" style="fill: #AA6F65;"></rect>
+                <rect x="60" y="20" width="21" height="120" style="fill: #874640;"></rect>
+                <rect x="80" y="20" width="70" height="120" style="fill: #751D19;"></rect>
+              </g>
+            </svg>
+            <h3 class="scoring-match"><%= investment.match %> %</h3>
+          </div>
         </div>
-        <br>
-        <%= link_to "Coup de coeur", set_favori_group_path(@group, investment), method: :post, remote: true, class: "btn btn-info" %>
-      </div>
-      <div style="text-align: center">
-        <svg viewBox="0 0 161 301" style="height: 100px" data-size="<%= investment.match / 100.0 %>">
-          <clipPath id="wine-clippath">
-          <path d="M80.125,138.75c-5.973,0 -12.822,-1.152 -19.834,-3.387l-0.166,-0.053c-6.667,-2.123 -13.482,-5.221 -19.849,-9.235l-0.151,-0.095c-16.52,-10.43 -30,-26.96 -30,-48.48c0,-12.61 7.5,-38.75 16.47,-56.25l106.64,0c9.01,17.75 16.89,43.64 16.89,56.25c0,38.585 -44.017,61.162 -69.848,61.25l-0.152,0Z" fill="#000"></path>
-          </clipPath>
-          <image xlink:href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/395186/wine.svg" x="0" y="0" width="100%" height="100%"></image>
-          <g class="glass-fill" clip-path="url(#wine-clippath)">
-            <rect x="10" y="20" width="31" height="120" style="fill: #874640;"></rect>
-            <rect x="40" y="20" width="21" height="120" style="fill: #AA6F65;"></rect>
-            <rect x="60" y="20" width="21" height="120" style="fill: #874640;"></rect>
-            <rect x="80" y="20" width="70" height="120" style="fill: #751D19;"></rect>
-          </g>
-        </svg>
-        <br>
-        <br>
-        <h2><%= investment.match %> %</h2>
+        <div class="card-top-buttons">
+          <div class="btn-top-green">
+            <%= link_to "Plus d'info", investment_path(investment) %>
+          </div>
+          <br>
+          <div class="btn-top-red">
+            <%= link_to "Investir", set_favori_group_path(@group, investment), method: :post, remote: true %>
+          </div>
+        </div>
       </div>
     </div>
   <% end %>

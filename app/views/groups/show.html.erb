@@ -4,98 +4,74 @@
     <%= @group.name %>
   </div>
 
-  <div class="container">
-    <div class="group-block">
-      <h4 class="group-title">Inviter des personnes à rejoindre le groupe</h4>
-      <div class="form-group d-flex align-items-center">
-        <% available_users = User.all.to_a %>
-        <% available_users.reject! {|u| u.id == @group.user_id } %>
-        <% available_users.reject! {|u| u.in? @group.users } %>
-        <%= form_tag(invite_group_users_groups_path(@group), style: 'width: 100%;') do %>
-          <%= select_tag "user_ids", options_from_collection_for_select(available_users, "id", "email"), multiple: true, class: 'form-control select2', style: "width: 100%;" %>
-          <%= submit_tag "inviter", class: "btn-invest-first btn-invest-test" %>
-        <% end %>
-      </div>
-    </div>
-    <hr>
-    <div class="group-block">
-      <table class="table table-bordered">
-        <h4 class="group-title">Investisseurs membres du groupe</h4>
-        <thead>
-          <tr>
-            <th scope="col">Nom</th>
-            <th scope="col">Statut du compte</th>
-            <th scope="col">Profil</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><small class="text-muted"></small> <%= image_tag @group.admin.avatar, class: "avatar-bordered", alt: "avatar-bordered" %> <%= @group.admin.first_name  %> <strong><%= @group.admin.last_name  %></strong> </td>
-            <td><small class="text-muted"></small>Approuvé</td>
-            <td><small class="text-muted"></small>ADMIN</td>
-          </tr>
-        <% @group.users_groups.each do |groupuser|  %>
-          <tr>
-            <td><small class="text-muted"></small> <%= image_tag groupuser.user.avatar, class: "avatar-bordered", alt: "avatar-bordered" %> <%= groupuser.user.first_name  %> <strong><%= groupuser.user.last_name  %></strong> </td>
-            <td><small class="text-muted"></small>
-              <% if groupuser.status == "validate" %>
-                <%= "Approuvé" %>
-              <% elsif groupuser.status == "waiting" %>
-                <%= "Invitation envoyée" %>
-              <% else %>
-                <%= "Demande à confirmer" %>
-              <% end %>
-            </td>
-            <td><small class="text-muted"></small>
-              <% if groupuser.status == "pending" %>
-               <%= link_to confirm_users_group_path(groupuser), method: :patch do  %>
-                 <button class="btn btn-outline-danger w-100">Confirmer</button>
-              <% end %>
-              <% else %>
-              <%= "Membre" %>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-    </div>
-    <hr>
-    <div class="group-block">
-      <div class="group-title">
+  <div class="container container-group">
+    <div id="container-left">
+      <div class="group-block">
         <h4 class="group-title">Votre projet d'investissement</h4>
-        <div class="card-offre-button">
-          <div class="btn btn-primary">
-            <%= link_to "Mettre à jour", edit_group_path(@group) %>
-          </div>
+        <div class="card-body">
+          <p>Région : <strong><%= @group.region %></strong> </p>
+          <p>Appellation : <strong><%= @group.designation %></strong> </p>
+          <p>Ticket d'entrée : <strong><%= @group.ticket_amount %></strong> </p>
+          <p>Investissement total : <strong><%= @group.investment_total %></strong> </p>
+          <p>Services proposés par le vigneron :
+          <% @group.services&.each do |service| %>
+            <strong><%= service %>, </strong>
+            <% end %>
+          </p>
+          <p>Profil du vigneron : <strong><%= @group.winemaker_profile %></strong> </p>
         </div>
       </div>
-      <div class="card-body">
-        <p><strong>Région viticole souhaitée :</strong> <%= @group.region %></p>
-        <p><strong>Appellation souhaitée :</strong> <%= @group.designation %></p>
-        <p><strong>Montant du ticket d'entrée souhaité :</strong> <%= @group.ticket_amount %></p>
-        <p><strong>Montant total de l'investissement souhaité :</strong> <%= @group.investment_total %></p>
-        <p><strong>Services proposés par le vigneron souhaités :</strong> <% @group.services&.each do |service| %>
-          <%= service %>,
+      <div class="group-block">
+        <h4 class="group-title">Suggestion d'investissements</h4>
+        <div class="cards-top">
+          <%= render 'cards_top', investments: @investments %>
+        </div>
+      </div>
+    </div>
+
+    <div id="container-right">
+      <div class="group-block">
+        <table class="table table-bordered table-member mb-0">
+          <h4 class="group-title mb-0">Membres du groupe</h4>
+          <thead>
+            <tr>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: center"><small class="text-muted"></small> <span aria-label="<%= @group.admin.first_name %> <%= @group.admin.last_name %>" data-balloon-pos="up"><%= image_tag @group.admin.avatar, class: "avatar-bordered", alt: "avatar-bordered" %> </span> </td>
+
+              <td style="text-align: center; vertical-align: middle"><small class="text-muted"></small>ADMIN</td>
+            </tr>
+          <% @group.users_groups.each do |groupuser|  %>
+            <tr>
+              <td style="text-align: center"><small class="text-muted" ></small> <span aria-label="<%= groupuser.user.first_name %> <%= groupuser.user.last_name %>" data-balloon-pos="up"><%= image_tag groupuser.user.avatar, class: "avatar-bordered", alt: "avatar-bordered" %></strong> </td>
+
+              <td style="text-align: center; vertical-align: middle"><small class="text-muted" ></small>
+                <% if groupuser.status == "pending" %>
+                 <%= link_to confirm_users_group_path(groupuser), method: :patch do  %>
+                   <button class="btn btn-outline-danger w-100">Confirmer</button>
+                <% end %>
+                <% else %>
+                <%= "Membre" %>
+                <% end %>
+              </td>
+            </tr>
           <% end %>
-        </p>
-        <p><strong>Profil du vigneron :</strong> <%= @group.winemaker_profile %></p>
+          </tbody>
+        </table>
       </div>
-    </div>
-    <hr>
-    <div class="group-block">
-      <h4 class="group-title">Suggestions d'investissements</h4>
-      <div class="cards-top">
-        <%= render 'cards_top', investments: @investments %>
-      </div>
-    </div>
-    <hr>
-    <div class="group-block d-flex justify-content-around">
-      <div class="btn btn-info">
-        <%= link_to "Paramétrer le groupe", group_path(@group) %>
-      </div>
-      <div class="btn btn-info">
-        <%= link_to "Demander l'avis à l'un de nos experts", group_path(@group) %>
+      <div class="group-block">
+        <h4 class="group-title">Inviter un investisseur</h4>
+        <div class="form-group d-flex align-items-center">
+          <% available_users = User.all.to_a %>
+          <% available_users.reject! {|u| u.id == @group.user_id } %>
+          <% available_users.reject! {|u| u.in? @group.users } %>
+          <%= form_tag(invite_group_users_groups_path(@group), style: 'width: 100%; text-align: center; padding-top: 15px') do %>
+            <%= select_tag "user_ids", options_from_collection_for_select(available_users, "id", "email"), multiple: true, class: 'form-control select2', style: "width: 100%;" %>
+            <%= submit_tag "inviter", class: "btn-invest-first btn-invest-test mx-auto boutton" %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
