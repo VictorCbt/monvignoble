@@ -102,6 +102,11 @@
 
 .card-top-buttons {
   display: flex;
+  justify-content: space-around;
+
+  a {
+    min-width: 40%;
+  }
 }
 
 .btn-top-red {
@@ -114,10 +119,11 @@
   cursor: pointer;
   display: flex;
   align-self: center;
+  justify-content: center;
   font-size: 0.8rem;
   font-weight: 300;
   line-height: 1;
-  margin: 15px;
+  // margin: 15px;
   padding: 1em 2em;
   text-decoration: none;
   text-align: center;
@@ -133,27 +139,32 @@
     color: white;
 }
 
+.container-button-green {
+  display: flex;
+  justify-content: center;
+}
+
 .btn-top-green {
   box-sizing: border-box;
-  appearance: none;
+  // appearance: none;
   background-color: transparent;
   border: 2px solid #698F3F;
   border-radius: 0.6em;
-  color: #a23e48;
+  color: #698F3F;
   cursor: pointer;
   display: flex;
   align-self: center;
   font-size: 0.8rem;
   font-weight: 300;
   line-height: 1;
-  margin: 15px;
+  // margin: 15px;
   padding: 1em 2em;
   text-decoration: none;
-  text-align: center;
+  justify-content: center;
   text-transform: uppercase;
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+  // transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 }
 
 .btn-top-green:hover {

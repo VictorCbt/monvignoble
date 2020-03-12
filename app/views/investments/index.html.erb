@@ -1,7 +1,8 @@
+<div class="banner-investment"></div>
 <div class="container-investment">
-
-  <div class="card-category-investment" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1565996596244-feb9a44f023a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1055&q=80)">
-    Resultat de la recherche
+<body class="body-investment">
+  <div class="title-page">
+    Investissements disponibles
   </div>
              <div id=filter>
                 <%= simple_form_for @group, url: investments_path, method: :get, remote: true, html: {class: 'form-inline'} do |f| %>
