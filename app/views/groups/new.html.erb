@@ -1,59 +1,97 @@
-<h1 class='title-page'>Créer votre groupe d'investisseurs</h1>
-<br><br>
-<div class="container h-100">
-<!--   <h1 class="text-center" style="color: #a23e48">Inscription</h1>
- -->
+<div class="container justify-content-center">
 
-    <div class="d-flex justify-content-center h-100">
-      <div class="user_card_form_group">
 
-        <div class="d-flex justify-content-center form_container">
-          <%= simple_form_for @group do |f| %>
-          <form>
-            <div class=" ">
-              <p style="color:#a23e48"><strong>Nom du groupe</strong></p>
-                <%= f.input :name, placeholder:'', label: false%>
-            </div>
-            <div class="w-100">
-                <p style="color:#a23e48"><strong>Région viticole souhaitée</strong></p>
-                <%= f.input :region, placeholder: '', input_html: { class: 'select3'}, collection: ["Alsace", "Beaujolais", "Bordeaux", "Bourgogne", "Champagne", "Corse", "Jura", "Languedoc-Roussillon", "Provence", "Savoie", "Sud-Ouest", "Vallée de la Loire", "Vallée du Rhône"], label: false %>
-            </div>
-            <div class=" ">
-                <p style="color:#a23e48"><strong>Appellation</strong></p>
-                <%= f.input :designation, placeholder: '', label: false %>
-            </div>
-             <div class="">
-              <p style="color:#a23e48"><strong>Ticket</strong></p>
-                <%= f.input :ticket_amount, placeholder: "Montant", label:false %>
-            </div>
-             <div class="">
-              <p style="color:#a23e48"><strong>Investissement total</strong></p>
-                  <%= f.input :investment_total, placeholder: "Montant", label:false %>
-            </div>
+  <br><br><br>
 
-              <div class="">
-                <p style="color:#a23e48"><strong>Services</strong></p>
-                <%= f.input :services, label: 'Services proposés par le vigneron', collection: ["Découverte des vendanges", "Etiquette de bouteille personnalisée", "Invitation à la dégustation annuelle", "Visite du domaine", "Initiation au processus de vinification"], input_html: { multiple: true }, label:false  %>
-              </div>
+  <br>
 
-             <div class="">
-              <p style="color:#a23e48"><strong>Profil</strong></p>
-                <%= f.input :winemaker_profile, label: 'Profil du vigneron', collection: ["Jeune vigneron", "Vigneron installé"], label:false %>
-            </div>
+  <div class="row justify-content-center">
+
+    <div class="col-xs-12 col-sm- col-sm-offset-3">
+      <div>
+        <%= simple_form_for @group, html: { id: "new_group_form"} do |f| %>
+        <% categories = ["Découverte des vendanges", "Etiquette de bouteille personnalisée", "Invitation à la dégustation annuelle", "Visite du domaine", "Initiation au processus de vinification"]%>
+        <% vigneron_profil = ["Jeune vigneron", "Vigneron installé"] %>
+
+        <div class="row">
+          <div class="col">
+            <h2><strong>Créez votre groupe</strong></h2>
              <br>
+            <br>
+            <p style="color:#a23e48"><strong>Nom du groupe</strong></p>
+            <%= f.input :name, placeholder:'', label: false%>
+          </div>
 
-            <div class="pb-3">
-                <%= f.button :submit, "Valider", class: 'btn btn-outline-danger w-100' %>
-                  <% end %>
-           </div>
-                 </div>
-
-          </form>
         </div>
+          <br>
+          <div class="row">
+            <div class="col">
+              <p style="color:#a23e48"><strong>Région viticole souhaitée</strong></p>
+              <%= f.input :region, input_html: { class: 'select2'}, collection: ["Alsace", "Beaujolais", "Bordeaux", "Bourgogne", "Champagne", "Corse", "Jura", "Languedoc-Roussillon", "Provence", "Savoie", "Sud-Ouest", "Vallée de la Loire", "Vallée du Rhône"], label: false %>
+            </div>
+            <div class="col">
+              <p style="color:#a23e48"><strong>Appellation</strong></p>
+              <%= f.input :designation, placeholder: 'Saint-joseph, Condrieu..', label: false %>
+            </div>
+          </div>
+            <hr>
+            <div class="row">
+              <div class="col">
+                <p style="color:#a23e48"><strong>Ticket</strong></p>
+                <%= f.input :ticket_amount, placeholder: "Montant", label:false %>
+              </div>
+              <div class="col">
+                <p style="color:#a23e48"><strong>Investissement total</strong></p>
+                <%= f.input :investment_total, placeholder: "Montant", label:false %>
+              </div>
+            </div>
+              <hr>
+            <div class="row">
+              <div class="col">
+                <p style="color:#a23e48"><strong>Services</strong></p>
+                <div class="form-group">
+                 <!--  <label class="control-label check_boxes optional"></label>
+                  <input type="hidden" name="group[services][]" value=""> -->
+                  <div class="category-choices">
+                    <% categories.each do |category| %>
+                    <input type="checkbox" value="<%= category %>" name="group[services][]" id="group_services_<%= category %>">
+                    <label for="group_services_<%= category %>" class="category-choice">
+                      <%= category %>
+                    </label>
+                    <br>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col">
+                 <p style="color:#a23e48"><strong>Profile</strong></p>
+                <div class="form-group">
+                 <!--  <label class="control-label check_boxes optional"></label>
+                  <input type="hidden" name="group[services][]" value=""> -->
+                  <div class="category-choices">
+                    <% vigneron_profil.each do |vigneron| %>
+                    <input type="radio" value="<%= vigneron %>" name="group[winemaker_profile]" id="group_winemaker_profile_<%= vigneron %>">
+                    <label for="group_winemaker_profile_<%= vigneron %>" class="category-choice">
+                      <%= vigneron %>
+                    </label>
+                    <br>
+                    <% end %>
+                  </div>
+                </div>
 
-        <div >
-            <div class="justify-content-center align px-4 m-2 pt-1 ">
-
+                <!-- <p style="color:#a23e48"><strong>Profil</strong></p> -->
+                <%#= f.input :winemaker_profile, label: 'Profil du vigneron', as: :check_boxes, collection: ["Jeune vigneron", "Vigneron installé"], label:false %>
+              </div>
+            </div>
+              <br>
+            <div class="row">
+              <div class="col">
+                <%= f.button :submit, "Valider", class: 'btn btn-invest-test btn-invest-first w-100' %>
+                <% end %>
+              </div>
             </div>
 
           </div>
@@ -61,6 +99,3 @@
       </div>
     </div>
   </div>
-
-
-

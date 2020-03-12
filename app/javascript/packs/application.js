@@ -5,12 +5,15 @@ require("channels")
 import "bootstrap";
 import { loadDynamicBannerText } from '../components/banner';
 import { initSearch } from '../components/search';
+import { initCategories } from '../components/category_choice';
+
 import '../plugins/init_sweetalert';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 import initSelect2 from '../plugins/init_select2.js'
 import initGlasses from '../plugins/init_glasses.js'
+
 
 loadDynamicBannerText();
 AOS.init();
@@ -26,3 +29,6 @@ initSweetalert('#sweet-alert-demo', {
 
 initSelect2();
 initGlasses();
+initCategories();
+
+

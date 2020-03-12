@@ -1,8 +1,7 @@
    .user_card_form_group {
-      width: 450px;
+      width: 750px;
       margin-top: auto;
       margin-bottom: auto;
-      background: #e9d2d5;
       position: relative;
       display: flex;
       justify-content: center;
@@ -15,3 +14,78 @@
       border: solid #a23e48;
 
     }
+
+
+.form-post {
+  background: white;
+  margin-top: 50px;
+  padding: 20px;
+  border-radius: 5px;
+  h1 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+    color: #666666;
+    margin-bottom: 50px;
+    margin-top: 0px;
+  }
+  .btn {
+    width: 100%;
+    padding: 10px;
+    font-weight: bold;
+  }
+}
+
+#new_group_form {
+  width: 700px;
+  margin: auto;
+  vertical-align: center;
+  justify-content: center;
+  color: #A53D48;
+  background-color: white;
+  padding: 40px;
+  border: solid 2px #A53D48;
+  border-radius: 5px;
+}
+
+// Checkboxes design
+.category-choices {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 20px 0;
+
+  input {
+    display: none;
+  }
+}
+
+.category-choice {
+  font-size: 14px;
+  color: #585858;
+  background: #white;
+  padding: 20px;
+  border: solid 2px #f1f1f1;
+  border-radius: 5px;
+  flex: 0 0 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4px;
+  text-align: center;
+
+  &:hover {
+    background: white;
+    font-weight: bold;
+    cursor: pointer;
+    border: solid 2px #585858;
+  }
+}
+
+input:checked + .category-choice {
+  background: #a33d46;
+  color: white;
+  font-weight: bold;
+  opacity: 1;
+  border: solid 2px #A53D48;
+}
