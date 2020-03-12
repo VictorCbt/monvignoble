@@ -7,23 +7,24 @@
       <% color = "" %>
     <% elsif @group.investment == investment %>
 
-      <% color = "" %>
+      <% color = "#E9D2D5" %>
       <% border = "solid" %>
       <% bordercolor = "#a43d46" %>
     <% else %>
       <% color = "" %>
-      <% opacity = "0.3" %>
+      <% opacity = "0.5" %>
     <% end %>
 
     <div class="card-top" data-investment-id="<%= investment.id %>" style="background-color: <%= color %>;border: <%= border %>; opacity: <%= opacity %>; border-color: <%= bordercolor %>">
       <div>
-        <%= cl_image_tag investment.photo.key, height: 100, width: 150, crop: :fill if investment.photo.attached? %>
+        <%= cl_image_tag investment.photo.key, height: 200, width: 300, crop: :fill if investment.photo.attached? %>
       </div>
       <div class="card-top-infos">
         <div class="card-top-text">
-          <h2><%= investment.investment_name %></h2>
+          <h2><%= investment.domaine_name %></h2>
           <p><%= investment.region %> - <%= investment.designation %></p>
           <p>Ticket : <%= investment.ticket_amount %> €</p>
+          <p>Nombre de parts : <%= investment.total_share %></p>
           <p>Inv total : <%= investment.investment_total %> €</p>
         </div>
       </div>
