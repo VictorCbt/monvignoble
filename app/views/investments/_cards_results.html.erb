@@ -9,11 +9,12 @@
           <div class="region-name">
             <%= investment.region %>
           </div>
-          <div class="domaine-name">
-            <%= investment.domaine_name %>
-          </div>
           <div class="designation">
             <%= investment.designation %>
+          </div>
+          <hr>
+          <div class="domaine-name">
+            <%= investment.domaine_name %>
           </div>
           <div class="producteur">
             Chouchouté par <%= investment.user.first_name %> <%= investment.user.last_name %>
@@ -40,7 +41,7 @@
   </div>
   <div class="card-footer">
     <div class="price">
-      <strong><%= number_to_currency(investment.ticket_amount, precision: 0, :unit => " € ") %></strong>
+      Ticket d'entrée <strong><%= number_to_currency(investment.ticket_amount, precision: 0, :unit => " € ") %></strong>
     </div>
     <div class="nb-parts">
       <%= investment.share_available %> parts
