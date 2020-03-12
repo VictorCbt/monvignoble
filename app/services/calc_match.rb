@@ -58,7 +58,7 @@ class CalcMatch
   end
 
   def cal_winemaker_profile
-    if @group.winemaker_profile.nil?
+    if @group.winemaker_profile.blank?
       @match += WINEMAKER_PROFILE_WEIGHT
     elsif
       @group.winemaker_profile == @investment.winemaker_profile
