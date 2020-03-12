@@ -4,20 +4,19 @@
     Resultat de la recherche
   </div>
              <div id=filter>
-            <%= simple_form_for @group, url: investments_path, method: :get, remote: true, html: {class: 'form-inline'} do |f| %>
+                <%= simple_form_for @group, url: investments_path, method: :get, remote: true, html: {class: 'form-inline'} do |f| %>
               <br>
               <% regions = ["Bordeaux", "Bourgogne", "Alsace", "Beaujolais", "Alsace", "Champagne", "Corse", "Jura", "Languedoc-Roussillon", "Provence", "Savoie", "Sud-Ouest", "Vallée de la Loire", "Vallée du Rhône"] %>
               <%= f.input :region, as: :select, label: 'Région viticole', collection: regions %>
               <%= f.input :ticket_amount, label: "Montant du ticket d'entrée" %>
-              <%= f.input :winemaker_profile, as: :select, label: 'Profil du vigneron', collection: ["Jeune vigneron", "Vigneron installé"] %>
+              <%= f.input :winemaker_profile, as: :select, label: 'Profil du Vigneron', collection: ["Jeune vigneron", "Vigneron installé"] %>
               <hr>
             <% end %>
            </div>
 
-          <div class="results-container">
-                <%= render 'cards_results', investments: @investments %>
-          </div>
-
+        <div class="container-cards">
+          <%= render 'cards_results', investments: @investments %>
+        </div>
 </div>
 
 
