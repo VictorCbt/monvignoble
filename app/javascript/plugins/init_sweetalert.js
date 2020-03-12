@@ -23,9 +23,6 @@ const sweetalertRequestOk = () => {
   // })
 }
 
-
-
-
 window.sweetalertRequestOk = sweetalertRequestOk
 
 

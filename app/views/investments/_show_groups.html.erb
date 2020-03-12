@@ -4,51 +4,53 @@
   <% ticket       = investment.ticket_amount %>
   <% users_group  = current_user.users_groups.find_by(group: group) %>
 
-  <div class="d-flex align-items-center bd-highlight ">
-    <div class="price pr-3 ">
-      <div class="d-flex" >
+  <div class="d-flex justify-content-between align-items-center ">
+
+    <div class="group-name align-items-center">
+      <div class="d-flex align-items-center" >
         <div class="align-self-center">
           <p><%= image_tag group.image_url, class: "avatar-bordered", alt: "avatar-bordered" %></p>
         </div>
-        <div class="align-self-center ml-3">
-          <p class=""> <%= group.name %> </p>
+        <div class="align-self-center pl-3 ">
+          <p class=""> <small> <%= group.name %> </small> </p>
         </div>
       </div>
     </div>
 
-    <div class="pl-3 flex-grow-1 justify-content-center" >
-      <div>
-        <div class="d-flex">
-          <h4 class="pr-3" style="color:#86B04A"><strong><%= number_to_currency(group.members.size * investment.ticket_amount, precision: 0, :unit => " €  ") %></strong></h4>
-          <p><small class="">collectés</small></p>
+
+      <div class="progressbar align-items-center">
+        <div class="d-flex align-items-center pr-3 ">
+          <h4 class="text-center" style="color:#86B04A"><strong><%= number_to_currency(group.members.size * investment.ticket_amount, precision: 0, :unit => " €  ") %></strong></h4>
+          <p><small class="pl-2 ">collectés</small></p>
         </div>
-        <div class="progress-bar bg-info" role="progressbar" style="width: <%= investment.completion_percentage_for(group) * 1.3 %>%" aria-valuenow="<%=investment.completion_percentage_for(group)%>" aria-valuemin="0" aria-valuemax="100"> <small> <strong><%=investment.completion_percentage_for(group).round%></strong> %</small>
+        <div class="progress-bar bg-info pr-3 pl-3" role="progressbar" style="width: <%= investment.completion_percentage_for(group) * 1.3 %>%" aria-valuenow="<%=investment.completion_percentage_for(group)%>" aria-valuemin="0" aria-valuemax="100"> <small> <strong><%=investment.completion_percentage_for(group).round%></strong> %</small>
         </div>
       </div>
-    </div>
 
-    <div class="ticket pr-3 pl-3 text-center">
+
+    <div class="ticket-demandes align-items-center text-center pr-1">
       <p><strong> <h4 style="color:#86B04A"><%= (((i_total) - (i_collect)) / (ticket)) %></strong></h4><small>parts restantes</small> </p>
     </div>
 
-    <% if group.admin == current_user %>
-       <p style="color:#a23e48"><small><i>Vous êtes admin</i></small></p>
-    <% elsif users_group.nil? %>
-      <p class="request-button pl-3">
-        <%= link_to "Rejoindre", join_request_group_users_groups_path(group), method: :post, class: 'btn-invest-first btn-invest-test', remote: true %>
-      </p>
-    <% elsif users_group.status == "waiting" %>
-      <p style="color:#a23e48"><small><i>Vous avez déjà été invité sur ce groupe</i></small></p>
-    <% elsif users_group.status == "pending" %>
-       <p style="color:#a23e48"><small><i>Votre demande est en cours</i></small></p>
-    <% elsif users_group.status == "validate" %>
-      <p style="color:#a23e48"><small><i>Vous êtes déjà membre</i></small></p>
-    <% end %>
-  </div>
-  <% if group.ready? %>
-    <div class="container-button-green">
-      <%= link_to "Envoyer une demande d'investissement au vigneron", "#", class: 'btn btn-top-green'%>
+      <% if group.admin == current_user %>
+         <p style="color:#a23e48" class="demandes"><small><i>Vous êtes admin</i></small></p>
+      <% elsif users_group.nil? %>
+        <p class="request-button ">
+          <%= link_to "Rejoindre", join_request_group_users_groups_path(group), method: :post, class: 'btn-invest-first btn-invest-test', remote: true %>
+        </p>
+      <% elsif users_group.status == "waiting" %>
+        <p style="color:#a23e48" class="demandes"><small><i>Vous avez déjà été invité sur ce groupe</i></small></p>
+      <% elsif users_group.status == "pending" %>
+         <p style="color:#a23e48" class="demandes"><small><i>Votre demande est en cours</i></small></p>
+      <% elsif users_group.status == "validate" %>
+        <p style="color:#a23e48" class="demandes"><small><i>Vous êtes déjà membre</i></small></p>
+      <% end %>
     </div>
+    <% if group.ready? %>
+    <div class="container-button-green">
+      <%= link_to "Envoyer une demande d'investissement au vigneron", "#", class: 'btn btn-top-green', id:'sweet-alert-demo', remote: true %>
+    </div>
+
   <% end %>
     <hr>
 <% end %>
