@@ -18,6 +18,18 @@ class Group < ApplicationRecord
   validates :winemaker_profile, inclusion: { in: ["Jeune vigneron", "Vigneron installé"] }, allow_nil: true
   validate :services_inclusion
 
+  def image_url
+    "https://dwj199mwkel52.cloudfront.net/assets/lewagon-logo-square-fe76916e1b923ade71e253ae6dc031d936e5e8eebac4e26b0fbac650ea6ee360.png"
+  end
+
+  def members
+    users.where.not(users_groups: {status: 'pending'}).to_a << admin
+  end
+
+  def ready?
+    members.size == group.investment.total_share
+  end
+
   private
 
   def clean_empty_services

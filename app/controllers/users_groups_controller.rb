@@ -26,6 +26,7 @@ class UsersGroupsController < ApplicationController
 
   def join_request
     @group = Group.find(params[:group_id])
+    ap @group
     @users_group = UsersGroup.new
     @users_group.group = @group
     @users_group.user = current_user
