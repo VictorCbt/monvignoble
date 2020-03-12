@@ -1,0 +1,50 @@
+.card-result2 {
+  max-width: 710px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 34px;
+  }
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.match_chiffre {
+  padding: 12px;
+}
+
+#btn-card {
+  color: white;
+}
+
+.infos-text {
+  padding: 12px;
+}
+
+.producteur {
+  font-style: italic;
+  color: #696969;
+}
+.region-name {
+  font-weight: bold;
+}
+
+.price {
+  font-weight: bold;
+}
+
+.nb-parts {
+  color: green;
+  font-weight: bold;
+}
+
+.card-result2:hover {
+
+}
+}
+

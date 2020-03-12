@@ -25,7 +25,7 @@ class CalcMatch
   private
 
   def cal_ticket_amount
-    if @group.ticket_amount.nil?
+    if @group.ticket_amount.blank?
       @match += TICKET_AMOUNT_WEIGHT
     else
       range = @investment.ticket_amount
@@ -36,7 +36,7 @@ class CalcMatch
   end
 
   def cal_investment_total
-    if @group.investment_total.nil?
+    if @group.investment_total.blank?
       @match += INVESTMENT_TOTAL_WEIGHT
     else
       range = @investment.investment_total / 4
@@ -47,7 +47,7 @@ class CalcMatch
   end
 
   def cal_region
-     if @group.region.nil?
+     if @group.region.blank?
       @match += REGION_WEIGTH
     elsif
       @group.region == @investment.region

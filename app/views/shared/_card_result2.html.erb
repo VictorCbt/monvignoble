@@ -1,0 +1,54 @@
+<div class="card-result2">
+  <div class="card-header">
+    <div class="image-carte">
+      <%= cl_image_tag investment.photo.key, height: 200, width: 300, crop: :fill if investment.photo.attached? %>
+    </div>
+    <div class="infos-text">
+      <div class="region-name">
+        <%= investment.region %>
+      </div>
+      <div class="domaine-name">
+        <%= investment.domaine_name %>
+      </div>
+      <div class="designation">
+        <%= investment.designation %>
+      </div>
+      <div class="producteur">
+        Chouchouté par <%= investment.user.first_name %> <%= investment.user.last_name %>
+      </div>
+      <hr>
+      <div class="match_chiffre">
+        <%= investment.match %> % de matching avec vos critètres
+      </div>
+    </div>
+    <div class="matching">
+      <svg viewBox="0 0 161 301" class="drinks" style="height: 100px" data-size="<%= investment.match / 100.0 %>">
+      <clipPath id="wine-clippath">
+      <path d="M80.125,138.75c-5.973,0 -12.822,-1.152 -19.834,-3.387l-0.166,-0.053c-6.667,-2.123 -13.482,-5.221 -19.849,-9.235l-0.151,-0.095c-16.52,-10.43 -30,-26.96 -30,-48.48c0,-12.61 7.5,-38.75 16.47,-56.25l106.64,0c9.01,17.75 16.89,43.64 16.89,56.25c0,38.585 -44.017,61.162 -69.848,61.25l-0.152,0Z" fill="#000"></path>
+      </clipPath>
+      <image xlink:href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/395186/wine.svg" x="0" y="0" width="100%" height="100%"></image>
+      <g class="glass-fill" clip-path="url(#wine-clippath)">
+        <rect x="10" y="20" width="31" height="120" style="fill: #874640;"></rect>
+        <rect x="40" y="20" width="21" height="120" style="fill: #AA6F65;"></rect>
+        <rect x="60" y="20" width="21" height="120" style="fill: #874640;"></rect>
+        <rect x="80" y="20" width="70" height="120" style="fill: #751D19;"></rect>
+      </g>
+        </svg>
+    </div>
+  </div>
+  <div class="card-footer">
+    <div class="price">
+      <%= investment.ticket_amount %> €
+    </div>
+    <div class="nb-parts">
+      <%= investment.share_available %> parts
+    </div>
+    <%= link_to "Plus d'info", investment_path(investment), class: "btn-bot-green" %>
+  </div>
+</div>
+
+
+
+
+
+

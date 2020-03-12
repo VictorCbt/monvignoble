@@ -61,7 +61,7 @@ private
       :investment_total,
       :share_available,
       :services,
-      :winemaker_profil,
+      :winemaker_profile,
       :deferred_remunation
     )
   end
