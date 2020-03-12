@@ -1,11 +1,10 @@
+<div class="banner-investment"></div>
 <body class="body-investment">
-
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/442116/pexels-photo-442116.jpeg?cs=srgb&dl=clouds-countryside-cropland-crops-442116.jpg&fm=jpg)">
+  <div class="title-page">
     <%= @group.name %>
   </div>
 
   <div class="container">
-    <hr>
     <div class="group-block">
       <h4 class="group-title">Inviter des personnes à rejoindre le groupe</h4>
       <div class="form-group d-flex align-items-center">
@@ -85,7 +84,7 @@
     </div>
     <hr>
     <div class="group-block">
-      <h4 class="group-title">Top 5 des investissements disponibles par rapport à votre projet d'investissement</h4>
+      <h4 class="group-title">Suggestions d'investissements</h4>
       <div class="cards-top">
         <%= render 'cards_top', investments: @investments %>
       </div>
