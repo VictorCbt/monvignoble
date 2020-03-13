@@ -11,8 +11,8 @@
         <div class="card-body">
           <p>Région : <strong><%= @group.region %></strong> </p>
           <p>Appellation : <strong><%= @group.designation %></strong> </p>
-          <p>Ticket d'entrée : <strong><%= @group.ticket_amount %></strong> </p>
-          <p>Investissement total : <strong><%= @group.investment_total %></strong> </p>
+          <p>Ticket d'entrée : <strong><%= number_to_currency(@group.ticket_amount, precision: 0, :unit => "€", format: "%n %u") %></strong> </p>
+          <p>Investissement total : <strong><%= number_to_currency(@group.investment_total, precision: 0, :unit => "€", format: "%n %u") %></strong> </p>
           <p>Services proposés par le vigneron :
           <% @group.services&.each do |service| %>
             <strong><%= service %>, </strong>

@@ -20,7 +20,7 @@
 
       <div class="progressbar align-items-center">
         <div class="d-flex align-items-center pr-3 ">
-          <h4 class="text-center" style="color:#86B04A"><strong><%= number_to_currency(group.members.size * investment.ticket_amount, precision: 0, :unit => " €  ") %></strong></h4>
+          <h4 class="text-center" style="color:#86B04A"><strong><%= number_to_currency(group.members.size * investment.ticket_amount, precision: 0, :unit => "€", format: "%n %u") %></strong></h4>
           <p><small class="pl-2 ">collectés</small></p>
         </div>
 
