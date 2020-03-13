@@ -31,4 +31,4 @@ initSelect2();
 initGlasses();
 initCategories();
 
-
+initSweetalert();
