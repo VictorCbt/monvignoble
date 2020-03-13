@@ -26,18 +26,18 @@
           <br>
           <div class="row">
             <div class="col">
-              <p style="color:#a23e48"><strong>Région viticole souhaitée</strong></p>
+              <p style="color:#a23e48"><strong>Région viticole</strong></p>
               <%= f.input :region, input_html: { class: 'select2'}, collection: ["Alsace", "Beaujolais", "Bordeaux", "Bourgogne", "Champagne", "Corse", "Jura", "Languedoc-Roussillon", "Provence", "Savoie", "Sud-Ouest", "Vallée de la Loire", "Vallée du Rhône"], label: false %>
             </div>
             <div class="col">
               <p style="color:#a23e48"><strong>Appellation</strong></p>
-              <%= f.input :designation, placeholder: 'Saint-joseph, Condrieu..', label: false %>
+              <%= f.input :designation, placeholder: 'Saint-Joseph, Condrieu..', label: false %>
             </div>
           </div>
             <hr>
             <div class="row">
               <div class="col">
-                <p style="color:#a23e48"><strong>Ticket</strong></p>
+                <p style="color:#a23e48"><strong>Ticket d'entrée</strong></p>
                 <%= f.input :ticket_amount, placeholder: "Montant", label:false %>
               </div>
               <div class="col">
@@ -48,7 +48,7 @@
               <hr>
             <div class="row">
               <div class="col">
-                <p style="color:#a23e48"><strong>Services</strong></p>
+                <p style="color:#a23e48"><strong>Services proposés par le vigneron</strong></p>
                 <div class="form-group">
                  <!--  <label class="control-label check_boxes optional"></label>
                   <input type="hidden" name="group[services][]" value=""> -->
@@ -67,7 +67,7 @@
             <hr>
             <div class="row">
               <div class="col">
-                 <p style="color:#a23e48"><strong>Profile</strong></p>
+                 <p style="color:#a23e48"><strong>Profil du vigneron</strong></p>
                 <div class="form-group">
                  <!--  <label class="control-label check_boxes optional"></label>
                   <input type="hidden" name="group[services][]" value=""> -->
