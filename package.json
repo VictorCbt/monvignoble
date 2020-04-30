@@ -10,7 +10,7 @@
     "balloon-css": "^1.0.4",
     "bootstrap": "^4.4.1",
     "gsap": "^3.2.4",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "popper.js": "^1.16.1",
     "select2": "^4.0.13",
     "sweetalert": "^2.1.2",
